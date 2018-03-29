@@ -1,0 +1,108 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="style/all.css" rel="stylesheet">
+     
+
+</head>
+<body>
+<nav class="navbar navbar-fixed-top" ng-controller="MainCtrl as vm">
+  <div class="brand-container">
+    <a class="brand small" ui-sref="appartments">
+      <span>Flat</span>Friend
+    </a>
+  </div>
+  
+
+  <div sidebarjs-toggle class="bars" ng-click="vm.changeWidth()"><i class="fa fa-bars" aria-hidden="true"></i></div> 
+  <sidebarjs ng-class="{ 'width': showAside }">
+    <side >
+      <div class="side-items">
+        <ul class="side-bar-list">
+          
+          <li ui-sref-active="qwe" ng-if="vm.user.role == 'landlord' " ui-sref="landlord_dashboard">
+            <a href="#">
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+              <span ng-class="{'display': showAside}">Моя Страница</span>
+            </a>
+          </li>
+
+          <li ui-sref-active="qwe" ng-if="vm.user.role == 'student' " ui-sref="student_dashboard">
+            <a href="#">
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+              <span ng-class="{'display': showAside}">Моя Страница</span>
+            </a>
+          </li>
+          
+          <li ui-sref-active="qwe" ui-sref="appartments">
+            <a href="#">
+              <i class="fa fa-bed" aria-hidden="true"></i>
+              <span ng-class="{'display': showAside}">Квартиры</span>
+            </a>
+          </li>
+
+          <li ui-sref-active="qwe" ng-if="vm.user" ui-sref="students">
+            <a href="#">
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              <span ng-class="{'display': showAside}">Студенты</span>
+            </a>
+          </li>
+
+          <li ui-sref-active="qwe" ng-if="vm.user.role == 'student' " ui-sref="chats">
+            <a href="#">
+              <i class="fa fa-comments" aria-hidden="true"></i>
+              <span ng-class="{'display': showAside}">Чат</span>
+            </a>
+          </li>
+
+          
+        </ul>
+      </div>
+    </side>
+  </sidebarjs>
+
+      <div class="user-profile" ng-if="vm.user">
+        <div class="user-avatar-container">
+          <img bs-dropdown ng-src="img/user.jpg" alt="avatar" class="user-avatar">
+          <ul class="dropdown-menu modified" role="menu">
+            <div class="triangle-with-shadow"></div>
+            <li ui-sref="student_dashboard" ng-if="vm.user.role == 'student'">Моя страница</li>
+            <li ui-sref="landlord_dashboard" ng-if="vm.user.role == 'landlord'">Моя страница</li>
+            <li ui-sref="user_ads">Объявления</li>
+            <li ui-sref="user_messages">Новости</li>
+            <li ng-click="vm.logout()">Выйти</li>
+          </ul>
+        </div>
+
+        <ul class="message-icons">
+            <li>
+              <a href="#">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+                <span>5</span>
+              </a>
+
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <span class="green">5</span>
+              </a>
+
+            </li>
+        </ul>
+      </div>
+
+      <div class="questions-section" ng-if="!vm.user">
+        Еще не зарегестрированы?
+        <a href="#" ui-sref="signup">Пройдите регистрацию!</a>
+        <a href="#" ui-sref="signin">Личный кабинет</a>
+      </div>
+
+
+</nav>
+</body>
+</html>
+

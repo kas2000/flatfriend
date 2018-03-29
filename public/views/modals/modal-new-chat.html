@@ -1,0 +1,25 @@
+<div class="modal">
+	<div class="modal-wrapper">
+		<span class="modal-close" ng-click="$hide()">
+		    <img src="../../img/cancel.svg" >
+		</span>
+		<span class="modal-title">Выберите собеседников</span>
+		<div class="modal-form">
+			<form ng-submit="vm.groupChat();$hide()">
+
+				<input required class="form-control" type="text" placeholder="Название беседы" ng-model="vm.title">
+
+				<div class="dropdown-content">
+					<li class="dropdown-content__list" ng-repeat="friend in vm.friends track by $index">
+						<div ng-click="vm.AddRoomParticipants(friend);">
+							<img class="chat-img" ng-src="{{friend.student.image}}">
+							<span ng-bind="friend.student.student_firstname"></span>
+						</div>
+					</li>
+				</div>
+		
+				<input type="submit" name="" class="submit_button" value="Создать">
+			</form>
+		</div>
+	</div>
+</div>

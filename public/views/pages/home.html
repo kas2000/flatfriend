@@ -1,0 +1,271 @@
+
+	<div class="home-image">
+		<img src="../../img/home/1.jpg">
+		<div class="home-image-text">
+			<div class="container">
+					<h1>
+						<span>Рады  приветствовать  вас</span>
+						<span>на  проекте  FlatFriend</span>
+					</h1>
+
+					<a class="submit_button button_main" ng-click="vm.start();">Начать</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="introduction">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="intro-container">
+					
+							<div class="intro-text">
+								<span>Пройдите быструю</span>
+								<span>регистрацию</span>
+							</div>
+					
+
+						
+						<div class="card-inputs">
+							<form ng-submit="vm.signUp()">
+								<span class="input input--madoka">
+									<input ng-model="vm.firstname" class="input__field input__field--madoka" type="text" id="input-0"/>
+									<label class="input__label input__label--madoka dark" for="input-0">
+										<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+											<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+										</svg>
+										<span class="input__label-content input__label-content--madoka">Имя</span>
+									</label>
+								</span>
+
+								<span class="input input--madoka">
+									<input ng-model="vm.lastname" class="input__field input__field--madoka" type="text" id="input-1"/>
+									<label class="input__label input__label--madoka dark" for="input-1">
+										<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+											<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+										</svg>
+										<span class="input__label-content input__label-content--madoka">Фамилия</span>
+									</label>
+								</span>
+
+								<span class="input input--madoka">
+									<input ng-model="vm.email" class="input__field input__field--madoka" type="text" id="input-2"/>
+									<label class="input__label input__label--madoka dark" for="input-2">
+										<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+											<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+										</svg>
+										<span class="input__label-content input__label-content--madoka">Почта</span>
+									</label>
+								</span>
+
+
+								<span class="input input--madoka">
+									<input ng-model="vm.password" class="input__field input__field--madoka" type="password" id="input-3"/>
+									<label class="input__label input__label--madoka dark" for="input-3">
+										<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+											<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+										</svg>
+										<span class="input__label-content input__label-content--madoka">Пароль</span>
+									</label>
+								</span>
+
+								<span class="input input--madoka">
+									<input ng-model="vm.password_confirm" class="input__field input__field--madoka" type="password" id="input-4"/>
+									<label class="input__label input__label--madoka dark" for="input-4">
+										<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+											<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+										</svg>
+										<span class="input__label-content input__label-content--madoka">Повторите пароль</span>
+									</label>
+								</span>
+
+								
+								<div class="group-elements group-elements-top">
+									<div class="element-select">
+										 <ul>
+							                 <li>
+							                     <input type="radio" name="balcony_state" id="balcony_state1"/ class="radio-nodot" ng-model="vm.role" value="student">
+							                     <label for="balcony_state1" class="">Студент</label>
+							                 </li>
+							                 <li>
+							                     <input ng-model="vm.role" value="landlord" class="radio-nodot" type="radio" name="balcony_state" id="balcony_state2"/>                 
+							                     <label for="balcony_state2" class="">Арендодатель</label>
+							                 </li>
+							             </ul>
+									</div>
+								</div>
+									
+								<button type="submit" class="submit_button">Зарегестрироваться</button>
+							</form>
+						</div>
+
+						<!-- <div class="card-button">
+							<a class="submit_button" ng-click="vm.sendNews(vm.email)"><span>Найти</span></a>
+						</div> -->
+					
+					</div>
+				</div>
+
+	  			<div class="col-sm-8">
+	  				<div class="row">
+
+	  					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	  						<div class="steps-container">
+	  							<span class="step">Шаг - 01</span>
+	  							<div class="step-details">
+	  								<i class="fa fa-address-card-o" aria-hidden="true"></i>
+	  								<h4>Зарегестрироваться</h4>
+	  								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy text. when an unknown a galley of type books.</p>
+	  							</div>
+	  						</div>
+	  					</div>
+
+	  					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	  						<div class="steps-container">
+	  							<span class="step">Шаг - 02</span>
+	  							<div class="step-details">
+	  								<i class="fa fa-users" aria-hidden="true"></i>
+	  								<h4>Найти сожителей</h4>
+	  								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy text. when an unknown a galley of type books.</p>
+	  							</div>
+	  						</div>
+	  					</div>
+	  					
+	  				</div>
+
+	  				<div class="row">
+
+	  					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	  						<div class="steps-container">
+	  							<span class="step">Шаг - 03</span>
+	  							<div class="step-details">
+	  								<i class="fa fa-home" aria-hidden="true"></i>
+	  								<h4>Найти квартиру</h4>
+	  								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy text. when an unknown a galley of type books.</p>
+	  							</div>
+	  						</div>
+	  					</div>
+
+	  					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	  						<div class="steps-container">
+	  							<span class="step">Шаг - 04</span>
+	  							<div class="step-details">
+	  								<i class="fa fa-money" aria-hidden="true"></i>
+	  								<h4>Арендовать</h4>
+	  								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy text. when an unknown a galley of type books.</p>
+	  							</div>
+	  						</div>
+	  					</div>
+	  				</div>
+	  			</div>	
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="about-flat-friend">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div class="about-flatfriend-details">
+						<div class="about-flatfriend-text">
+							<h1>Мы всегда запотимся о наших пользователях</h1>
+							<p>Everyone has future plans and that includes your dream house. I, myself, is hoping that one day my family could live perfectly in my dream house - modern and exotic. Your goal can come true with determination and effective planning. It takes time and money to build or purchase.</p>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="about-support-items">
+									<i class="fa fa-diamond" aria-hidden="true"></i>
+									<h4>Уникальность</h4>
+									<p>Lorem Ipsum is the best simply dummy text.It takes time and money to build or purchase.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="about-support-items">
+									<i class="fa fa-cogs" aria-hidden="true"></i>
+									<h4>Тех.поддержка</h4>
+									<p>Lorem Ipsum is the best simply dummy text.It takes time and money to build or purchase.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="about-support-items">
+									<i class="fa fa-bolt" aria-hidden="true"></i>
+									<h4>Быстрая обработка запросов</h4>
+									<p>Lorem Ipsum is the best simply dummy text.It takes time and money to build or purchase.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="about-support-items">
+									<i class="fa fa-code" aria-hidden="true"></i>
+									<h4>Умный сервис</h4>
+									<p>Lorem Ipsum is the best simply dummy text.It takes time and money to build or purchase.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="about-support-items">
+									<i class="fa fa-diamond" aria-hidden="true"></i>
+									<h4>Уникальность</h4>
+									<p>Lorem Ipsum is the best simply dummy text.It takes time and money to build or purchase.</p>
+								</div>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="about-support-items">
+									<i class="fa fa-diamond" aria-hidden="true"></i>
+									<h4>Уникальность</h4>
+									<p>Lorem Ipsum is the best simply dummy text.It takes time and money to build or purchase.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="about-flatfriend-image">
+						 <div class="flatfriend-image">
+						 	
+						 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="developers">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="developers-text">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry's standard dummy text.It takes time and money to build or purchase.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<footer class="footer-main">
+		<div class="footer-right">
+			Kasymzhan and Tahir created with
+			<i class="fa fa-heart" aria-hidden="true"></i>
+		</div>
+
+		<div class="footer-left">
+			<i class="fa fa-copyright" aria-hidden="true"></i>
+			<a href="#">FlatFriend</a>
+			2017
+		</div>
+	</footer>
+
+
+
+
+

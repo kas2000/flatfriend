@@ -1,0 +1,90 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Профиль студента</h1>
+			<ul class="breadcrumb al-breadcrumb">
+				<li><a href="#">Студенты</a></li>
+				<li>{{vm.student.user.firstname}}</li>
+			</ul>
+		</div>
+
+
+		<!-- <div id="page_layout"> -->
+			<div class="narrow-column-wrap">
+				<div class="narrow-column">
+					<div class="page_block page_photo">
+						<div class="page-student-avatar">
+							<img ng-src="{{vm.student.image}}" class="student-avatar-img" ng-click="vm.showPhoto();">
+						</div>
+					</div>
+
+					<div class="page_block">
+						<div class="student-like">
+							<div class="student-like-row">
+								<div class="student-like-img">
+									<img src="../../img/icons/like.svg">
+								</div>
+								<div class="student-like-text" ng-click="vm.favoriteStudent();">
+									 Добавить в избранные
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="wide_column_wrap">
+				<div class="wide-column">
+					<div class="page_block">
+						<div class="student-info-wrap">
+							<div class="student-top">
+								<h2 ng-bind="vm.student.student_firstname"></h2>
+								<div class="student-univeristy">
+									<span ng-bind="vm.student.university + ', ' + vm.student.grade + '-й курс' "></span>
+								</div>
+							</div>
+
+							<div class="student-comment" ng-if="vm.comment">
+								<span ng-bind="'- ' + vm.student.student_comment"></span>
+							</div>
+
+							<div class="student-personality-container bordered">
+								<div class="col-md-6 student-personality-info">
+									<div class="personality-label">Языки: </div>
+									<span ng-bind="vm.student.languages"></span>
+								</div>
+								<div class="col-md-6 student-personality-info">
+									<div class="personality-label">Родной город:</div>
+									<span ng-bind="vm.student.born_city"></span>
+								</div>
+							</div>
+
+							<div class="student-personality-container">
+								<div class="col-md-6 student-personality-info">
+									<div class="personality-label">Отношение к курению:</div>
+									<span ng-bind="vm.student.smoking_attitude"></span>
+								</div>
+								<div class="col-md-6 student-personality-info">
+									<div class="personality-label">Отношение к алкоголю:</div>
+									<span ng-bind="vm.student.alcohol_attitude"></span>
+								</div>
+							</div>
+
+							<div class="student-personality-container">
+								<div class="col-md-6 student-personality-info">
+									<div class="personality-label">Важное в людях:</div>
+									<span ng-bind="vm.student.behaviour_attitude"></span>
+								</div>
+								<div class="col-md-6 student-personality-info">
+									<div class="personality-label">Кулинарные навыки:</div>
+									<span ng-bind="vm.student.cooking_skills"></span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>

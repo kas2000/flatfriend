@@ -1,0 +1,268 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Поиск квартиры</h1>
+			<ul ui-sref="add_appartment" ng-if="vm.user.role == 'landlord' || !vm.user" class="breadcrumb al-breadcrumb" style="cursor: pointer; background-color: #fff; box-shadow: 0 5px 5px 0 rgba(0,0,0,.25);">
+				<li><a>Подать объявление</a></li>
+			</ul>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+
+					<!-- <div class="row"> -->
+						<div class="col-md-12">
+							<div class="filtration">
+								<div class="filtration-body" ng-class="{'filtration-full':filtration_status}">
+									<div class="row">
+										<ul class="filtration-items">
+											<li>
+												<select name="rooms" class="select-control appartments" ng-model="rooms_final.type" ng-options="d.rooms as d.value for d in rooms"	>
+												</select>
+											</li>
+
+											<li>
+												<span>Цена: </span>
+												<input type="number" placeholder="от" ng-model="vm.price_from" class="form-control form-small"> -
+												<input class="form-control form-small" type="number" placeholder="до" ng-model="vm.price_to"> тг
+											</li>
+
+											<li>
+												<button class="filtration-button" ng-click="vm.filterFlat();">Найти</button>
+											</li>
+
+											<li>
+												<button class="filtration-button" ui-sref="map">На карте</button>
+											</li>
+
+											<li>
+												<button class="filtration-button" ng-click="vm.fullFiltration();">Расширенный поиск</button>
+											</li>
+
+										</ul>								
+									</div>
+
+									<div class="row">
+										<div class="filtration-container">
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Тип дома</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="home_type_final.type" ng-options="d.name as d.home_type for d in home_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Телефон</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="phone_type_final.type" ng-options="d.phone_type as d.name for d in phone_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Мебель</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="furniture_type_final.type" ng-options="d.name as d.furniture_type for d in furniture_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Пол</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="floor_type_final.type" ng-options="d.name as d.floor_type for d in floor_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Дверь</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="door_type_final.type" ng-options="d.name as d.door_type for d in door_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Балкон</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="balcony_type_final.type" ng-options="d.balcony_type as d.name for d in balcony_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Интернет</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="internet_type_final.type" ng-options="d.name as d.internet_type for d in internet_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Состояние</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="state_type_final.type" ng-options="d.name as d.state_type for d in state_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Санузел</label>
+													<div class="col-xs-8 col-sm-8">
+														<select name="home_type" class="select-control auto-control" ng-model="wc_type_final.type" ng-options="d.name as d.wc_type for d in wc_types">
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Кухня</label>
+													<div class="col-xs-8 col-sm-8">
+														<input type="number" placeholder="от" ng-model="vm.kitchen_area_from" class="form-control form-extra-small"> -
+														<input class="form-control form-extra-small" type="number" placeholder="до" ng-model="vm.kitchen_area_to">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Общая площадь</label>
+													<div class="col-xs-8 col-sm-8">
+														<input type="number" placeholder="от" ng-model="vm.overall_area_from" class="form-control form-extra-small"> -
+														<input class="form-control form-extra-small" type="number" placeholder="до" ng-model="vm.overall_area_to">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-4 col-sm-4">
+												<div class="form-group">
+													<label class="col-xs-4 col-sm-4 control-label">Жилая площадь</label>
+													<div class="col-xs-8 col-sm-8">
+														<input type="number" placeholder="от" ng-model="vm.living_area_from" class="form-control form-extra-small"> -
+														<input class="form-control form-extra-small" type="number" placeholder="до" ng-model="vm.living_area_to">
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div ng-if="vm.filtered_flats">
+						<p class="filtered_warning" ng-if="vm.filtered_flats.length%10==1">Найдено {{vm.filtered_flats.length}} объявление:</p>
+						<p class="filtered_warning" ng-if="vm.filtered_flats.length%10!==1">Найдено {{vm.filtered_flats.length}} объявления:</p>
+						<div class="col-lg-4 col-md-4 col-xs-12" ng-repeat="flat in vm.filtered_flats track by $index" ui-sref="appartments_ad({id: flat._id})">
+							<div class="card property">
+								<div class="property-card m-b-15">
+									<div class="row">
+										
+										<div class="col-xs-12">
+											<div class="property-image">
+												<img ng-src="{{flat.main_image}}">
+											</div>
+										</div>
+										<div class="col-xs-12">
+											<div class="body">
+												<div class="property-content">
+													<div class="listing-info">
+														<div>
+															<h4>за <span ng-bind="flat.price + ' ₸'" class="green"></span> в сутки</h4>
+															<h4 class="flat-address"><span ng-bind="flat.rooms"></span>-комнатная квартира</h4>
+														</div>
+														<div class="flat-detail">
+															 <p class="text-muted">
+															 	<i class="fa fa-map-marker" aria-hidden="true"></i>
+															 	<span ng-bind="flat.street + ' ' + flat.house_number + ' '+ flat.cross_street"></span>
+															 </p>
+
+															 <p class="text-muted">
+															 	<span ng-bind="flat.year + ' г.п., ' + 'Кухня ' + flat.kitchen_area + 'кв.м.'">Lorem ipsum dolor sit amet, consectetur adipiscing elit Aliquam gravida magna et fringilla convallis. Pellentesque habitant morb</span>
+															 </p>
+														</div>
+														<div class="flat-sidestatus">
+															<p class="text-muted">3 комментария</p>
+															<p class="text-muted">{{flat.date | date : 'dd.MM.y'}}</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div ng-class="{filtered: vm.filtered_flats}" class="col-lg-4 col-md-4 col-xs-12" ng-repeat="flat in vm.flats | orderBy: '-date'" ui-sref="appartments_ad({id: flat._id})" style="cursor: pointer;">
+						<div class="card property">
+							<div class="property-card m-b-15">
+								<div class="row">
+									
+									<div class="col-xs-12">
+										<div class="property-image">
+											<img ng-src={{flat.main_image}}>
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="body">
+											<div class="property-content">
+												<div class="listing-info">
+													<div class="">
+														<h4 ng-bind="flat.pay_frequency + ', '"></h4><span ng-bind="flat.price + ' ₸'" class="green"></span>
+													</div>
+													<h4 class="flat-address"><span ng-bind="flat.rooms"></span>-комнатная квартира</h4>
+													<div class="flat-detail">
+														 <p class="text-muted">
+														 	<i class="fa fa-map-marker" aria-hidden="true"></i>
+														 	<span ng-bind="flat.street + ' ' + flat.house_number + ' '+ flat.cross_street"></span>
+														 </p>
+
+														 <p class="text-muted">
+														 	<span ng-bind="flat.year + ' г.п., ' + 'Кухня ' + flat.kitchen_area + 'кв.м.'">Lorem ipsum dolor sit amet, consectetur adipiscing elit Aliquam gravida magna et fringilla convallis. Pellentesque habitant morb</span>
+														 </p>
+													</div>
+													<div class="flat-sidestatus">
+														<p class="text-muted">3 комментария</p>
+														<p class="text-muted">{{flat.date | date : 'dd.MM.y'}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

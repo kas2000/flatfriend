@@ -1,0 +1,27 @@
+.narrow-column.narrow-column-margin_bot{
+	margin-bottom: 20px;
+}
+.panel-content .edit{
+	font-size: 20px;
+	float: right;
+	cursor: pointer;
+}
+.hide{
+	display: none;
+}
+.form-control.hidden{
+	display: none;
+}
+.form-control.data_edit{
+	display: initial!important;
+}
+.label-container.hidden{
+	display: none;
+}
+.label-container.data_edit{
+	display: initial!important;
+	padding: 0;
+}
+.hidden_container.data_edit{
+	display: initial!important;
+}

@@ -1,0 +1,77 @@
+.user_ad-container {
+	width: 1000px;
+}
+.user_ad {
+	width: 100%;
+	border-top: 1px solid #ececec;
+	border-bottom: 1px solid #ececec;
+	padding: 15px 15px;
+	display: flex;
+}
+.user_ad-top {
+	height: 25px;
+	padding: 30px 15px;
+}
+.user_ad-top ul{
+	padding: 0px 75px;
+}
+.user_ad-top ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+.user_ad-top ul li:last-child{
+	float: right;
+}
+.user_ad-img{
+	display: inline-block;
+}
+.user_ad-img img{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+.user_ad-title{
+	width: 320px;
+	line-height: 29px;
+	padding-left: 20px;
+}
+.user_ad-title .firstname{
+	font-weight: 500;
+	color: #000;
+	display: block;
+}
+.user_ad-title .action.view{
+	padding-left: 0;
+}
+.user_ad-title .action{
+	padding-left: 5px;
+	cursor: pointer;
+	font-size: 11px;
+}
+.user_ad-title .action.delete{
+	color: red;
+}
+.user_ad-price{
+	float: right;
+}
+.user_ad-title span i{
+	width: 8px;
+	height: 8px;
+	margin-right: 5px;
+}
+@media screen and (max-width: 800px) and (min-width: 425px){
+	.user_ad-container{
+		width: 500px;
+	}
+}
+
+@media screen and (max-width: 1025px) and (min-width: 801px){
+	.user_ad-container{
+		width: 600px;
+	}
+	/*.price{
+		padding-left: 500px;
+	}*/
+}

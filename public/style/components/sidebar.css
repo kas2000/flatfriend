@@ -1,0 +1,38 @@
+.side-items{
+	width: 100%;
+	overflow: hidden;
+}
+.side-bar-list{
+	list-style-type: none;
+	width: 100%;
+	margin-top: 10px;
+}
+.side-bar-list li{
+	height: 42px;
+	cursor: pointer;
+	line-height: 42px;
+	padding: 0;
+}
+.side-bar-list li a{
+	padding-left: 20px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 13px;
+}
+.side-bar-list li a span{
+	margin-left: 20px;
+}
+
+.selected{
+	background-color: #209e91;
+}
+  .width{
+    max-width: 55px;
+  }
+  .display{
+    display: none;
+  }
+.qwe{
+	background-color: #209e91;
+	transition: .2s ease-in;
+}

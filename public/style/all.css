@@ -1,0 +1,37 @@
+@import url('vendor/reset.css');
+
+@import url('components/navbar.css');
+@import url('components/sidebar.css');
+@import url('components/wrapper.css');
+@import url('components/input.css');
+@import url('components/buttons.css');
+@import url('components/panel.css');
+@import url('components/angular-sidebarjs.css');
+@import url('components/modal.css');
+@import url('components/cards.css');
+@import url('components/select.css');
+@import url('components/full-photos.css');
+@import url('components/image_upload.css');
+@import url('components/angular-ui-notification.min.css');
+
+@import url('pages/dashboard.css');
+@import url('pages/home.css');
+@import url('pages/signup.css');
+@import url('pages/profile-edit.css');
+@import url('pages/appartments.css');
+@import url('pages/add_appartment.css');
+@import url('pages/add_students.css');
+@import url('pages/chat.css');
+@import url('pages/students.css');
+@import url('pages/students_ad.css');
+@import url('pages/student_dashboard.css');
+@import url('pages/appartments-ad.css');
+@import url('pages/user_ads.css');
+@import url('pages/map.css');
+
+
+
+@import url('bootstrap/css/bootstrap.css');
+@import url('font-awesome-4.7.0/css/font-awesome.min.css');
+
+

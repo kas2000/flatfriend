@@ -1,0 +1,38 @@
+
+<div class="signup-content">
+		<header class="header-inverse header-signup">
+				<nav class="navbar-signup menu">
+					<div class="container">
+						<a class="brand" href="#" ui-sref="appartments">
+		   					<span>Flat</span>Friend
+		  				</a>
+
+		  				<div class="signup-left">
+		  					<a href="#" ui-sref="appartments">На главную</a>
+		  				</div>
+
+					</div>
+				</nav>
+		</header>
+
+		<div class="main-signin" style="padding-top: 70px;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8" style="width: 500px; background-color: #fff; float: none; margin: 0 auto; border-radius: 8px; box-shadow: 0 0 35px rgba(0,0,0, .4);">
+						<div class="signin-container" style="width: 100%; height: 100%; padding: 20px; text-align: center;">
+							<h3 style="margin-top: 0; margin-bottom: 20px;">Вход в личный кабинет</h3>
+							<form style="width: 300px; margin: 0 auto;" ng-submit="vm.signIn();">
+								<div class="row">
+									<input ng-model="vm.email" class="form-control" type="email" name="email" value="" placeholder="Ваша почта" required>
+									<input ng-model="vm.password" class="form-control" type="password" name="password" value="" placeholder="Ваш пароль" required>
+									<div class="reg-button">
+										<input type="submit" name="" class="submit_button" value="Войти">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

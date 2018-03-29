@@ -1,0 +1,179 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Поиск студентов</h1>
+			<ul ui-sref="add_students" ng-if="vm.user.role == 'student'" class="breadcrumb al-breadcrumb" style="cursor: pointer; background-color: #fff; box-shadow: 0 5px 5px 0 rgba(0,0,0,.25);">
+				<li><a>Подать объявление</a></li>
+			</ul>
+		</div>
+
+		<div class="page_block_container">
+			<div class="page_block">
+				<div class="panel-heading">
+					<h3 class="panel-title">Фильтрация</h3>
+				</div>
+
+				<div class="panel-body">
+					<div class="channels-block">
+						<div class="row">
+							<label class="col-sm-3 control-label">Университет</label>
+							<div class="col-sm-9">
+								<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control ng-not-empty ng-valid ng-dirty ng-touched open">
+									<span class="ui-select-match" placeholder="Выберите языки">
+										<span ng-if="vm.universities_extra !== undefined" class="ui-select-match-item btn btn-default btn-xs">{{vm.universities_extra.uni_name}}
+										<i ng-click="vm.remove_university(vm.universities_extra)" class="fa fa-times" aria-hidden="true"></i>
+										</span>
+									</span>
+
+									<input type="search" class="ui-select-search input-xs ng-pristine ng-valid ng-empty ng-touched" ng-init="show_universities=false" ng-click="show_universities=!show_universities;">
+								</div>
+													
+								<ul class="dropdown-selections" ng-if="show_universities" click-outside="vm.closeUniversities();">
+									<input type="search" class="dropdown-search" ng-model="search" placeholder="Поиск университета">
+									<li class="ui-select-choices-group" ng-repeat="university in vm.universities | filter:search track by $index" ng-click="vm.add_university(university);">{{university.uni_name}}</li>
+								</ul>
+							</div>							
+						</div>
+
+						<div class="row">
+							<label class="col-sm-3 control-label">Языки</label>
+							<div class="col-sm-9">
+								<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control ng-not-empty ng-valid ng-dirty ng-touched open">
+									<span class="ui-select-match" placeholder="Выберите языки">
+										<span class="ui-select-match-item btn btn-default btn-xs" ng-repeat="skill in vm.skills track by $index">{{skill}}
+											<i ng-click="vm.delete(skill)" class="fa fa-times" aria-hidden="true"></i>
+										</span>
+									</span>
+									<input type="search" class="ui-select-search input-xs ng-pristine ng-valid ng-empty ng-touched" ng-init="show=false" ng-click="show=!show;">
+								</div>
+													
+								<ul class="dropdown-selections" ng-if="show&&vm.languages.length>0" click-outside="vm.closeLanguages();">
+									<li class="ui-select-choices-group" ng-repeat="language in vm.languages track by $index" ng-click="vm.add(language);show=!show;">{{language}}
+									</li>
+								</ul>
+							</div>
+						</div>
+
+										<div class="row">
+										<label class="col-sm-3 control-label">Родной город</label>
+											<div class="col-sm-9">
+												<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control ng-not-empty ng-valid ng-dirty ng-touched open">
+													<span class="ui-select-match" placeholder="Выберите город">
+														<span ng-if="vm.extra_city[0] !== undefined" class="ui-select-match-item btn btn-default btn-xs" ng-repeat="city in vm.extra_city track by $index">{{city}}
+															<span>
+																<i ng-click="vm.remove_city(city)" class="fa fa-times" aria-hidden="true"></i>
+															</span>
+														</span>
+														
+													</span>
+													<input type="search" class="ui-select-search input-xs ng-pristine ng-valid ng-empty ng-touched" ng-init="show_cities=false" ng-click="show_cities=!show_cities;">
+												</div>
+												
+												<ul class="dropdown-selections" ng-if="show_cities" click-outside="vm.closeCities();">
+													<input type="search" class="dropdown-search" ng-model="search" placeholder="Поиск города">
+													<li class="ui-select-choices-group" ng-repeat="city in vm.cities | filter:search track by $index" ng-click="vm.add_city(city);">{{city}}
+													</li>
+												</ul>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="filtration-attitude-container">
+												<label class="col-xs-8 control-label">Отношение к алкоголю</label>
+												<div class="col-md-6">
+													<select name="alcohol" class="select-control auto-control" ng-model="alcohol.type" ng-options="d.attitude as d.value for d in alcoholAttitude"></select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="filtration-attitude-container">
+												<label class="col-xs-8 control-label">Отношение к курению</label>
+												<div class="col-md-6">
+													<select name="smoking" class="select-control auto-control" ng-model="smoking.type" ng-options="d.attitude as d.value for d in smokingAttitude"></select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="filtration-attitude-container">
+												<label class="col-xs-8 control-label">Главное в людях</label>
+												<div class="col-xs-4">
+													<select name="behaviour" class="select-control auto-control" ng-model="behaviour.type" ng-options="d.behaviour as d.value for d in behaviourAttitude"></select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="filtration-attitude-container">
+												<label class="col-xs-8 control-label">Кулинарные навыки</label>
+												<div class="col-xs-4">
+													<select name="cooking-skills" class="select-control auto-control" ng-model="cooking.type" ng-options="d.skill as d.value for d in cookingSkills"></select>
+												</div>
+											</div>
+										</div>
+										<button class="filtration-button" ng-click="vm.filterStudents();">	Найти
+										</button>
+									</div>
+								</div>
+			</div>
+		</div>
+
+							
+		<div class="page_block_container">
+			<div class="page_block">
+				<div class="panel large-panel with-scroll feed-panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">студенты</h3>
+					</div>
+					<div class="panel-body">
+
+						<div class="students-ad-container" ng-if="vm.filtered_students">
+							<p class="filtered_warning no-padding" ng-if="vm.filtered_students.length%10==1">Найдено {{vm.filtered_students.length}} объявление:</p>
+							<p class="filtered_warning no-padding" ng-if="vm.filtered_students.length%10!==1">Найдено {{vm.filtered_students.length}} объявления:</p>
+							<div class="student-ad" ng-repeat="student in vm.filtered_students" ui-sref="students_ad({id: student._id})">
+								<div class="ad-image">
+									<img ng-src="{{student.image}}">
+								</div>
+								<div class="text-block text-ad">
+									<div class="student-name">
+										<span class="name">{{student.student_firstname}}</span>
+									</div>
+									<div class="student-personality">
+										<span ng-bind="student.university + ', Курс: ' + student.grade + ', Языки: ' + student.languages "></span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="students-ad-container" ng-class="{filtered: vm.filtered_students}">
+							<div class="student-ad" ng-repeat="student in vm.allStudents" ui-sref="students_ad({id: student._id})">
+								<div class="ad-image">
+									<img ng-src="{{student.image}}">
+								</div>
+								<div class="text-block text-ad">
+									<div class="student-name">
+										<span class="name">{{student.student_firstname}}</span>
+									</div>
+									<div class="student-personality">
+										<span ng-bind="student.university + ', Курс: ' + student.grade + ', Языки: ' + student.languages "></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+
+
+		
+			
+			
+		</div>
+	
+
+	</div>
+</div>

@@ -1,0 +1,232 @@
+.chat-container{
+    width: 850px;
+    margin: 20px auto;
+}
+.chat{
+    width: 100%;
+    height: 500px;
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    display: flex;
+}
+.write-to{
+    padding: 15px 20px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    color: #fff;
+    background: #222B34;
+    outline: none;
+    transition: .2s ease-in;
+}
+.chat-friend-list{
+    width: 270px;
+    text-align: center;
+    padding: 15px;
+    border-right: 1px solid #e7e7e7; 
+}
+.chat-friend-list ul li{
+    list-style: none;
+    line-height: 23px;
+}
+.chat-img{
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-right: 5px;
+}
+.friend-list{
+    padding: 15px;
+    width: 270px;
+    border-right: 1px solid #e7e7e7;
+}
+.friend-list ul li{
+    list-style: none;
+}
+.content{
+    width: calc(100% - 270px);
+    padding: 15px;
+    position: relative;
+    border-bottom: 1px solid #e7e7e7;
+}
+.content-inner{
+    height: calc(100% - 50px);
+    overflow-x: scroll;
+}
+.content-inner::-webkit-scrollbar{ 
+    display: none;
+}
+.content-inner::-moz-scrollbar{ 
+    display: none;
+}
+.send-message{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: #eee;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #e7e7e7;
+}
+.send-message form{
+    width: 100%;
+}
+.send-message input{
+    width: 70%
+}
+.send-message button{
+    width: 30%;
+    float: right;
+    height: 50px;
+    font-weight: 400;
+    font-size: 15px;
+}
+.input-message{
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    color: rgba(0, 0, 0, .74);
+}
+.send-button{
+    padding: 15px 20px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    color: #fff;
+    background: #dfb81c;
+    outline: none;
+    transition: .2s ease-in;
+}
+.chat{
+    position: relative;
+    font-size: 18px;
+    border-bottom: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+.chat img{
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin-right: 5px;
+}
+.chat-hint span{
+    font-weight: 400;
+    font-size: 13px;
+}
+.chat-hint{
+    margin-bottom: 10px;
+}
+.login-form--modal {
+    position: relative;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.login-form__close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    opacity: .6;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+}
+.login-form--modal--invite {
+    text-align: center;
+}
+.chat-friend.active {
+    background-color: #F5F7FA;
+    color: #666;
+}
+/*.message_container{
+    height: 100%;
+}*/
+.message-container.active{
+    float: right!important;
+    background-color: #d4e7fa;
+}
+.message-container{
+    display: block;
+}
+/*.message{
+    display: inline-block;
+    color: #000;
+    padding: 5px;
+    border-radius: 6px;
+    float: left;
+}*/
+/*.messages{
+    min-height: 45px;
+    padding: 4px 12px 4px 8px;
+    position: relative;
+}
+.message-text{
+    padding: 5px;
+    color: #000;
+}
+.message{
+    max-width: 200px;
+    display: table-cell;
+    vertical-align: bottom;
+    background-color: #fff;
+    padding: 4px 4px 3px;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-sizing: border-box;
+}*/
+.dropdown-content {
+    overflow-y: scroll;
+    height: 200px;
+    margin-top: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown-content li{
+    list-style: none;
+}
+.dropdown-content::-webkit-scrollbar {
+    display: none;
+}
+.dropdown-content__list {
+    list-style: none;
+    box-sizing: border-box;
+    padding: 10px;
+    color: rgba(0, 0, 0, .74);
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: .2s ease-out;
+}
+.dropdown-content__list:hover {
+    background-color: #dfb81c;
+    color: #fff;
+}
+.dropdown-content__list.active {
+    background-color: #dfb81c;
+    color: #fff;    
+}   
+.dropdown-content__list.chosen{
+    background-color: #dfb81c;
+    color: #fff;
+}
+.modal-chat_title{
+    display: block; font-size: 30px;
+}
+.modal-chat_img_container{
+    width: 100%; height: auto; margin-top: 10px;
+}
+.modal-chat_img {
+    width: 150px; height: 150px; border-radius: 50%;
+}
+.modal-chat_buttons {
+    margin-top: 15px;
+}

@@ -1,0 +1,184 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Мой кабинет</h1>
+			<ul ui-sref="user_ads" class="breadcrumb al-breadcrumb" style="background: #fff;cursor: pointer;box-shadow: 0 5px 5px 0 rgba(0,0,0,.25);">
+				<li><a href="#">Мои объявления</a></li>
+			</ul>
+			<ul ui-sref="user_messages" class="breadcrumb al-breadcrumb" style="background: #fff;cursor: pointer;box-shadow: 0 5px 5px 0 rgba(0,0,0,.25); margin-right: 10px;">
+				<li><a href="#">Сообщения</a></li>
+			</ul>
+		</div>
+<!-- 
+		<div class="content-top">
+			<h1>Мой кабинет</h1>
+			<ul ui-sref="add_students" ng-if="vm.user.role == 'student'" >
+				<li><a>Подать объявление</a></li>
+			</ul>
+		</div> -->
+
+			<div class="narrow-column narrow-column-margin_bot"  ng-if="!vm.student.avatar">
+				<div class="page_block page_photo">
+					<div class="page-student-avatar">
+						<img src="../../img/workers/team.jpg" class="student-avatar-img">
+					</div>
+				</div>
+			</div>
+				
+			<div class="narrow-column narrow-column-margin_bot" ng-if="vm.student.avatar">
+				<div class="page_block page_photo">
+					<div class="page-student-avatar">
+						<img ng-src="{{vm.student.avatar}}" class="student-avatar-img">
+					</div>
+				</div>
+			</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+					<i ng-click="vm.editProfile()" class="fa fa-pencil-square-o edit" aria-hidden="true"></i>
+
+					<h3 class="with-line no-padding">Общая информация</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Имя</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.firstname}}</span>
+									<input type="text" ng-model="vm.student.firstname" ng-class="{'data_edit' : showEdit}" class="form-control hidden">
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Фамилия</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.lastname}}</span>
+									<input type="text" ng-model="vm.student.lastname" ng-class="{'data_edit' : showEdit}" class="form-control hidden">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Пол</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.gender}}</span>
+										<div class="label-container hidden" ng-class="{'data_edit' : showEdit}">
+											<label class="radio-inline custom-radio nowrap clearfix">
+												<input ng-model="vm.student.gender" type="radio" name="gender" value="Мужской">
+												<span>Мужской</span>
+											</label>
+
+											<label class="radio-inline custom-radio nowrap margin-left">
+												<input ng-model="vm.student.gender" type="radio" name="gender" value="Женский">
+												<span>Женский</span>
+											</label>
+										</div>
+								<!-- 	<input type="text" ng-model="vm.gender" ng-class="{'data_edit' : showEdit}" class="form-control hidden"> -->
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Дата рождения</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.day+'.'+vm.student.month+'.'+vm.student.year}}</span>
+									<div class="hidden_container hidden" ng-class="{'data_edit' : showEdit}">
+										<select name="birthday" class="select-control" ng-model="vm.student.day" required ng-options="d.day as d.name for d in days">
+											<option value="">День</option>
+										</select>
+
+
+										<select name="month" class="select-control" ng-model="vm.student.month" required ng-options="d.month as d.name for d in months">
+											<option value="">Месяц</option>
+										</select>
+
+										<select name="year" class="select-control" ng-model="vm.student.year" required ng-options="d.year as d.name for d in years">
+											<option value="">Год</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<h3 class="with-line no-padding">Данные для входа</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Почта</label>
+								<div class="col-sm-9">
+									{{vm.student.email}}
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Пароль</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">Информация засекрeчена</span>
+									<div class="hidden_container hidden" ng-class="{'data_edit' : showEdit}">
+										<input type="password" name="pass" class="form-control" placeholder="Ваш новый пароль" ng-model="vm.new_password">
+										<input type="password" name="pass" class="form-control" placeholder="Повторите ваш новый пароль" ng-model="vm.confirm_new_password">
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<h3 class="with-line no-padding">Социальные сети</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Instagram</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.instagram}}</span>
+									<div ng-class="{'data_edit' : showEdit}" class="hidden_container hidden">
+										<input type="text" name="instagram" class="form-control" ng-model="vm.student.instagram">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">VKontakte</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.vk}}</span>
+									<div ng-class="{'data_edit' : showEdit}" class="hidden_container hidden">
+										<input type="text" name="vk" class="form-control" ng-model="vm.student.vk">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Facebook</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.facebook}}</span>
+									<div ng-class="{'data_edit' : showEdit}" class="hidden_container hidden">
+										<input type="text" name="facebook" class="form-control" ng-model="vm.student.facebook">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Telegram</label>
+								<div class="col-sm-9">
+									<span ng-class="{'hide': hideData}">{{vm.student.telegram}}</span>
+									<div ng-class="{'data_edit' : showEdit}" class="hidden_container hidden">
+										<input type="text" name="telegram" class="form-control" ng-model="vm.student.telegram">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<button class="filtration-button hidden_container hidden " ng-class="{'data_edit' : showEdit}" ng-click="vm.editProfileGo()">Сохранить</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

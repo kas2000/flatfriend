@@ -1,0 +1,213 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Квартира</h1>
+			<ul class="breadcrumb al-breadcrumb">
+				<li><a href="#">Квартиры</a></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<div class="page-padding">
+			<div class="page_block">
+				<div class="appartment-heading">
+					<h3>{{vm.flat.rooms + '-комнатная квартира, ' + vm.flat.street + '-' + vm.flat.house_number}}</h3>
+				</div>
+				<div class="appartment-price">
+						<span>{{vm.flat.price + ' ₸'}}</span>
+				</div>
+			</div>
+			<div class="appartment-info-wrap">
+				<div class="appartment-info-column">
+					<div class="page_block">
+						<div class="appartment-info">
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Дом
+								</div>
+								<span ng-if="vm.flat.home_type">{{vm.flat.home_type + ', '}}</span>
+								<span>{{vm.flat.year + ' г.п.'}}</span>
+							</div>
+
+
+
+							<div class="appartment-info-row" ng-if="vm.flat.house_complex">
+								<div class="appartment-info-label">
+									Жилой комплекс
+								</div>
+								<span>{{vm.flat.house_complex}}</span>
+							</div>
+
+							<div class="appartment-info-row" ng-if="vm.flat.floor !== 'undefined'">
+								<div class="appartment-info-label">
+									Этаж
+								</div>
+								
+								<span>{{vm.flat.floor}}</span> из <span>{{vm.flat.all_floors}}</span>
+								
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Площадь
+								</div>
+								<span>{{'общая - ' +vm.flat.all_area + ' м²'}}</span>
+								<span ng-if="vm.flat.kitchen_area">{{', кухня - ' + vm.flat.kitchen_area + ' м²'}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Состояние
+								</div>
+								<span>{{vm.flat.flat_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Санузел
+								</div>
+								<span>{{vm.flat.wc_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Балкон
+								</div>
+								<span>{{vm.flat.balcony_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Дверь
+								</div>
+								<span>{{vm.flat.door_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Телефон
+								</div>
+								<span>{{vm.flat.phone_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Интернет
+								</div>
+								<span>{{vm.flat.internet_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Мебель
+								</div>
+								<span>{{vm.flat.furniture_state}}</span>
+							</div>
+
+							<div class="appartment-info-row">
+								<div class="appartment-info-label">
+									Пол
+								</div>
+								<span>{{vm.flat.floor_state}}</span>
+							</div>
+
+							<div class="appartment-comment">
+								<div class="appartment-info-row">								
+									{{vm.flat.flat_comment}}							
+								</div>
+							</div>
+
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="appartment-photo-wrap">
+				<div class="appartment-photo-column">
+					<div class="page_block">
+						<div class="appartment-photos">
+							<img ng-src="{{vm.main_photo}}">
+						</div>
+					</div>
+					<div class="page_block for_photo">
+						<div class="photo_container" ng-repeat="photo in vm.photos track by $index">
+							<img ng-src="{{photo}}" class="appartment_photo" ng-click="vm.showPhoto(photo)">
+						</div>
+					</div>
+				</div>
+
+				<div class="email_landlord" ng-click="vm.emailModal();">
+					<span>Написать хоязину на почту</span>
+				</div>
+			</div>
+
+			<div class="page_block">
+				<div class="appartment-map">
+					<ya-map ya-after-init="afterInit($target)" ya-zoom="12"></ya-map>
+				</div>
+			</div>
+
+			<div class="page_block">
+				<div class="comments-container">
+					<div class="comments">
+						<h4>Комментарии - {{vm.comments.length}}</h4>
+						<div class="comment" ng-repeat="comment in vm.comments">
+							<div class="comment-info">
+								<span ng-bind="comment.firstname"></span>
+								<p class="text-muted">{{comment.date | date: 'dd.MM.yyyy'}}</p>
+								<p class="text-muted">{{comment.user.email || comment.email}}</p>
+							</div>
+							<div class="comment-text" ng-bind="comment.text"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="page_block">
+				<form ng-submit="vm.comment();" class="comment-form">	
+					<h5>Добавить комментарий</h5>
+						<div class="comment-element" ng-if="!vm.user">
+							<label class="control-label col-md-2">Ваш ник или имя</label>
+							<input required class="form-control form-extra-medium" type="text" ng-model="vm.name" placeholder="Ваше имя">
+						</div>
+
+						<div class="comment-element" ng-if="!vm.user">
+							<label required class="control-label col-md-2">Ваша почта</label>
+							<input class="form-control form-extra-medium" type="email" ng-model="vm.email"  placeholder="Ваша почта">
+						</div>
+						
+						<div class="comment-element" ng-if="vm.user">
+							<label class="control-label col-md-2">Ваш ник или имя</label>
+							<input class="form-control form-extra-medium" disabled type="text" ng-model="vm.user.firstname" >
+						</div>
+
+						<div class="comment-element" ng-if="vm.user">
+							<label class="control-label col-md-2">Ваша почта</label>
+							<input disabled type="email" ng-model="vm.user.email"  placeholder="Ваша почта">
+						</div>
+						
+						<div class="comment-element">
+							<label class="control-label col-md-2">Ваш комментарий:</label>
+							<textarea required ng-model="vm.text" class="flat-comment"></textarea>
+						</div>
+
+						<div class="submit_button_container">
+							<button type="submit" class="submit_button">Написать</button>
+						</div>
+					
+				</form>
+			</div>
+
+
+			
+
+			
+		
+			
+		</div>
+
+		
+	</div>
+</div>

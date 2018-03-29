@@ -1,0 +1,160 @@
+
+
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Добавление объявления на поиск студентов</h1>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+					<form  ng-submit="vm.addStudent();">
+					<h3 class="with-line no-padding">Основная информация<p class="hint-star">Поля со звездочкой <span class="required-sign">*</span> — обязательные</p></h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row">
+								<label class="col-sm-3 control-label">Университет<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="form-control" ng-init="showUniveristy=false" ng-click="showUniveristy=true">
+										<span class="ui-select-match-item btn btn-default btn-xs" ng-repeat="uni in vm.university track by $index">{{uni}}
+											<span>
+												<i class="fa fa-times" aria-hidden="true" ng-click="vm.deleteUniversity(uni);"></i>
+											</span>
+										</span>
+									</div>
+									<ul class="dropdown-selections" ng-if="showUniveristy&&vm.university_extra.length>0" click-outside="vm.closeUniversity()">
+										<li class="ui-select-choices-group" ng-repeat="uni in vm.university_extra track by $index" ng-click="vm.addUniversity(uni);">{{uni.uni_name}}</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Курс<span class="required-sign"> *</span></label>
+								<div class="col-xs-4">
+									<input type="number" min="1" max="4" name="cost" class="form-control form-small" ng-model="vm.grade" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+
+							
+
+							<div class="form-group row">
+								<label class="col-sm-3 control-label">Языки<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="form-control" ng-init="showLanguages=false" ng-click="showLanguages=true">
+										<span class="ui-select-match-item btn btn-default btn-xs" ng-repeat="language in vm.languages track by $index">{{language}}
+											<span>
+												<i class="fa fa-times" aria-hidden="true" ng-click="vm.deleteLanguage(language);"></i>
+											</span>
+										</span>
+									</div>
+									<ul class="dropdown-selections" ng-if="showLanguages&&vm.languages_extra.length>0" click-outside="vm.closeLanguages()">
+										<li class="ui-select-choices-group" ng-repeat="language in vm.languages_extra track by $index" ng-click="vm.addLanguage(language);">{{language}}</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label class="col-sm-3 control-label">Родной город<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="form-control" ng-init="showCities=false" ng-click="showCities=true">
+										<span class="ui-select-match-item btn btn-default btn-xs" ng-repeat="city in vm.cities track by $index">{{city}}
+											<span>
+												<i class="fa fa-times" aria-hidden="true" ng-click="vm.deleteCity(city);"></i>
+											</span>
+										</span>
+									</div>
+									<ul class="dropdown-selections" ng-if="showCities&&vm.cities_extra.length>0" click-outside="vm.closeCities()">
+										<li class="ui-select-choices-group" ng-repeat="city in vm.cities_extra track by $index" ng-click="vm.addCities(city);">{{city}}</li>
+									</ul>
+								</div>
+							</div>
+
+							
+						</div>
+
+
+					</div>
+
+					<h3 class="with-line no-padding">Дополнительная информация</h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Отношение к курению</label>
+								<div class="col-xs-4">
+									<select name="smoking" class="select-control auto-control" ng-model="vm.data.smoking_attitude"></select>
+								</div>
+
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Отношение к алкоголю</label>
+								<div class="col-xs-4">
+									<select name="alcohol" class="select-control auto-control" ng-model="alcohol.type" ng-options="d.attitude as d.value for d in alcoholAttitude"></select>
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Главное в людях</label>
+								<div class="col-xs-4">
+									<select name="behaviour" class="select-control auto-control" ng-model="behaviour.type" ng-options="d.behaviour as d.value for d in behaviourAttitude"></select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Кулинарные навыки</label>
+								<div class="col-xs-4">
+									<select name="cooking-skills" class="select-control auto-control" ng-model="cooking.type" ng-options="d.skill as d.value for d in cookingSkills"></select>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Расскажите о себе</label>
+								<div class="col-sm-9">
+										<textarea ng-trim="false" maxlength="200" class="student-about-comment" ng-model="vm.data.student_comment"></textarea>
+										<div class="warning-maxlength no-absolute">Осталось {{200-vm.data.student_comment.length}} символов</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+
+
+					<h3 class="with-line no-padding">Фотографии</h3>
+					<div class="row">
+						<input type="file" name="studentImage" file-model="vm.file">
+
+					</div>
+
+						<div class="add-button-container">
+							<input type="submit" name="" class="submit_button" value="Опубликовать">
+						</div>
+
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+

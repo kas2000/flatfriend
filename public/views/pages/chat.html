@@ -1,0 +1,93 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Чат</h1>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+					<button ng-click="vm.groupChatModal()" class="filtration-button">Создать беседу</button>
+					<button ng-click="vm.videoChat();" class="filtration-button" ng-disabled="isDisabled">Видеочат</button>
+					<section class="chat-container">
+						
+						<div class="chat">
+
+							<div class="chat-friend-list">
+								<ul>
+									<li class="chat-hint">
+										<span>Чаты</span>
+									</li>
+									<li class="chat-friend" ng-repeat="room in rooms track by $index" ng-click="vm.chooseRoom(room, $index)" ng-class="{'active': current_room_index == $index}">
+										<!-- <img ng-src="{{room.student.image}}"> -->
+										<span ng-bind="room.title"></span>
+									</li>
+								</ul>
+							</div>
+
+							<div class="content">
+								<div class="content-inner" id="content-inner">
+
+									<div class="message-container" ng-repeat="message in archive_messages track by $index">
+										<span ng-bind="message.text" ></span>
+									</div>
+
+										<div class="message-container" ng-repeat="new_msg in vm.new_messages track by $index">
+											<span ng-bind="new_msg" ng-class="{'active': message.user == vm.user_id}" scroll-glue-bottom="glued"></span>
+										</div>
+								</div>
+
+								<div class="send-message">
+									<form ng-submit="vm.sendMessage()">
+										<input class="input-message" type="text" placeholder="Ваше сообщение..." ng-model="vm.text">
+										<button class="send-button" type="submit">Отправить</button>
+									</form>
+									
+								</div>
+							</div>
+						</div>
+
+					</section>
+
+
+
+	<div class="pure-u-2-3" id="video-container">
+    	<div id="videoStream"><video id="their-video" autoplay controls style="width: 500px; height: 400px;"></video>
+        <video id="my-video" muted="true" autoplay controls style="width: 500px; height: 400px;"></video></div>
+        <button ng-click="vm.getStreaming()">Check</button>
+        <button ng-click="DisconnectUser();">Disconnect</button>
+        <div ng-repeat="streamer in vm.streamers track by $index">
+        	<h2 ng-bind="streamer.firstname+' Готов к звонку! '"></h2>
+        	<button ng-click="vm.callUser(streamer.streamId)">Call</button>
+        	<button ng-if="connect == 1" ng-click="vm.end();">End Call</button>
+        </div>
+    </div>
+
+
+
+					<section class="modal" ng-if="isAcceptModal">
+						<form class="login-form login-form--modal login-form--modal--invite" style="margin-top: 20px;">
+							<img class="login-form__close" src="../../img/cancel.svg" ng-click="vm.declineRoom()">
+							<span class="modal-chat_title">{{vm.sender_name + " пригласил'a вас на чат"}}</span>
+							<div class="modal-chat_img_container">
+								<img src="../../img/3.jpg" class="modal-chat_img">
+							</div>
+							<div class="modal-chat_buttons">
+								<button class="filtration-button" ng-click="vm.declineRoom()">Отказать</button>
+								<button class="filtration-button" ng-click="vm.acceptRoom()">Принять</button>
+							</div>
+						</form>
+						<div class="backdrop">
+							
+						</div>
+					</section>
+
+
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

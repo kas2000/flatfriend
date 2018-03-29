@@ -1,0 +1,424 @@
+
+
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Добавление объявления на квартиру</h1>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+					<form ng-submit="vm.addFlat()">
+					<h3 class="with-line no-padding">Основная информация<p class="hint-star">Поля со звездочкой <span class="required-sign">*</span> — обязательные</p></h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Кол-во комнат<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<input type="number" min="1" max="25" name="rooms" class="form-control form-small" ng-model="vm.rooms" required>
+								</div>
+
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Цена<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="radio">
+  										<label class="pay_frequency"><input ng-model="vm.pay_frequency" class="radio_no_changes" type="radio" name="pay_frequency" value="по суточно" required>по суточно</label>
+									</div>
+									<div class="radio">
+  										<label class="pay_frequency"><input ng-model="vm.pay_frequency" class="radio_no_changes" type="radio" name="pay_frequency" value="по месячно" required>по месячно</label>
+									</div>
+									<div class="radio">
+  										<label class="pay_frequency"><input ng-model="vm.pay_frequency" class="radio_no_changes" type="radio" name="pay_frequency" value="по квартально" required>по квартально</label>
+									</div>
+									<input type="number" min="500" max="999999" name="cost" class="form-control form-small" ng-model="vm.price" required> тг
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Тип строения</label>
+								<div class="col-sm-9">
+									<select name="home_type" class="select-control auto-control" ng-model="home_type_final.type" ng-options="d.name as d.home_type for d in home_types">
+									</select>
+								</div>
+
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Год постройки<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<input type="number" min="1900" max="2018" name="cost" class="form-control form-small" ng-model="vm.year" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Этаж</label>
+								<div class="col-sm-9">
+										<input ng-model="vm.floor" class="form-control form-small" type="number" min="1" max="25"> из
+										<input ng-model="vm.all_floors" class="form-control form-small" type="number" min="1" max="25">
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Площадь, м2<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<input ng-model="vm.all_area" class="form-control form-small" type="number" min="1" name="" placeholder="Общая" required>
+									<input ng-model="vm.living_area" class="form-control form-small" type="number" min="1" name="" placeholder="Жилая">
+									<input ng-model="vm.kitchen_area" class="form-control form-small" type="number" min="1" name="" placeholder="Кухня">
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+
+					<h3 class="with-line no-padding">Расположение</h3>
+						<div class="row" style="padding: 15px;">
+							<!-- 
+								<div class="form-group row clearfix">
+									<label class="col-sm-2 control-label">Город, район</label>
+										<select size="20" class="place-select" ng-options="d.city as d.name for d in city" ng-model="vm.city">
+										</select>
+										<select size="20" class="place-select" ng-model="vm.district">
+											<option>Helloe</option>
+										</select>
+										<select size="20" class="place-select" ng-model="vm.rajon">
+											<option>Helloe</option>
+										</select>
+								</div>
+ -->
+								<div class="form-group row clearfix">
+									<label class="col-sm-2 control-label">Жилой комплекс</label>
+										<select class="select-control auto-control" ng-model="vm.house_complex" ng-options="d.house_complex as d.name for d in house_complex">
+											<option value="">Комплекс</option>
+										</select>
+								</div>
+
+								<div class="form-group row clearfix">
+									<label class="col-sm-2 control-label">Улица, № дома<span class="required-sign"> *</span></label>
+										<input class="form-control form-medium" type="text" name="" placeholder="Например, Абая" required ng-model="vm.street">
+										<input class="form-control form-small" type="text" name="" placeholder="№" required ng-model="vm.house_number">
+										<input class="form-control form-medium" type="text" name="" placeholder="Например, Саина" ng-model="vm.cross_street">
+								</div>
+
+								<div class="form-group row clearfix">
+									<p class="warning">Обязательно укажите местоположение квартиры на карте!</p>
+									<div class="col-sm-9">
+
+										<ya-map ya-after-init="afterInit($target)" ya-event-click="mapClick($event)" ya-zoom="12" ya-center="[76.8772099,43.2315231]">
+										
+										</ya-map>
+										
+									</div>
+								</div>
+						</div>
+
+
+					<h3 class="with-line no-padding">Фотографии</h3>
+					<droplet ng-model="interface">
+						<div class="photo-upload-container">
+							<div class="add-files">
+								<droplet-upload-multiple ng-model="interface" class="upload"></droplet-upload-multiple>
+								<span>Или просто перетащите фотографии сюда...</span>
+	                		</div>
+	                	</div>
+                	</droplet>
+
+					<droplet ng-model="interface">
+						<ul class="files">
+				                  <li ng-repeat="model in interface.getFiles(interface.FILE_TYPES.VALID)" class="preview-container">
+				                      <droplet-preview ng-model="model"></droplet-preview>
+				                      <div class="delete" ng-click="model.deleteFile()">&times;</div>
+				                      <div class="size">{{model.file.size / 1024 / 1024 | number: 1}}MB</div>
+				                  </li>
+				              </ul>
+	                </droplet>
+
+						<!-- <input type="file" file-model="vm.files" multiple> -->
+
+						<!-- <input type="file" id="file1" name="file" multiple ng-files="getTheFiles($files)" required />
+
+						<input type="button" ng-click="uploadFiles()" value="Upload" /> -->
+					<!-- </div> -->
+
+					<h3 class="with-line no-padding">Характеристики</h3>
+					<div class="row">
+						<div class="group-elements">
+							<label class="charac-label">Состояние</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="flat_state" id="radio1"/ class="radio-nodot" ng-model="vm.flat_state" value="хорошее">
+					                     <label for="radio1" class="">хорошее</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.flat_state" value="среднее" class="radio-nodot" type="radio" name="flat_state" id="radio2"/>                 
+					                     <label for="radio2" class="">среднее</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.flat_state" value="евроремонт" class="radio-nodot" type="radio" name="flat_state" id="radio3"/>                
+					                      <label for="radio3" class="">евроремонт</label>
+					                 </li>
+
+					              	 <li>
+					                     <input ng-model="vm.flat_state" value="требует ремонта" class="radio-nodot" type="radio" name="flat_state" id="radio4"/>                
+					                      <label for="radio4" class="">требует ремонта</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.flat_state" value="свободная планировка" class="radio-nodot" type="radio" name="flat_state" id="radio5"/>                
+					                      <label for="radio5" class="">свободная планировка</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.flat_state" value="черновая отделка" class="radio-nodot" type="radio" name="flat_state" id="radio6"/>                
+					                      <label for="radio6" class="">черновая отделка</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Телефон</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="phone_state" id="phone_state1"/ class="radio-nodot" ng-model="vm.phone_state" value="отдельный">
+					                     <label for="phone_state1" class="">отдельный</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.phone_state" value="блокиратор" class="radio-nodot" type="radio" name="phone_state" id="phone_state2"/>                 
+					                     <label for="phone_state2" class="">блокиратор</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.phone_state" value="есть возможность подключения" class="radio-nodot" type="radio" name="phone_state" id="phone_state3"/>                
+					                      <label for="phone_state3" class="">есть возможность подключения</label>
+					                 </li>
+
+					              	 <li>
+					                     <input ng-model="vm.phone_state" value="нет" class="radio-nodot" type="radio" name="phone_state" id="phone_state4"/>                
+					                      <label for="phone_state4" class="">нет</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Интернет</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="internet_state" id="internet_state1"/ class="radio-nodot" ng-model="vm.internet_state" value="ADSL">
+					                     <label for="internet_state1" class="">ADSL</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.internet_state" value="через TV кабель" class="radio-nodot" type="radio" name="internet_state" id="internet_state2"/>                 
+					                     <label for="internet_state2" class="">через TV кабель</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.internet_state" value="Проводной" class="radio-nodot" type="radio" name="internet_state" id="internet_state3"/>                
+					                      <label for="internet_state3" class="">Проводной</label>
+					                 </li>
+
+					              	 <li>
+					                     <input ng-model="vm.internet_state" value="оптика" class="radio-nodot" type="radio" name="internet_state" id="internet_state4"/>                
+					                      <label for="internet_state4" class="">оптика</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Санузел</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="wc_state" id="wc_state1"/ class="radio-nodot" ng-model="vm.wc_state" value="раздельный">
+					                     <label for="wc_state1" class="">раздельный</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.wc_state" value="совмещенный" class="radio-nodot" type="radio" name="wc_state" id="wc_state2"/>                 
+					                     <label for="wc_state2" class="">совмещенный</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.wc_state" value="2 с/у и более" class="radio-nodot" type="radio" name="wc_state" id="wc_state3"/>                
+					                      <label for="wc_state3" class="">2 с/у и более</label>
+					                 </li>
+
+					              	 <li>
+					                     <input ng-model="vm.wc_state" value="нет" class="radio-nodot" type="radio" name="wc_state" id="wc_state4"/>                
+					                      <label for="wc_state4" class="">нет</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Балкон</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="balcony_state" id="balcony_state1"/ class="radio-nodot" ng-model="vm.balcony_state" value="балкон">
+					                     <label for="balcony_state1" class="">балкон</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.balcony_state" value="лоджия" class="radio-nodot" type="radio" name="balcony_state" id="balcony_state2"/>                 
+					                     <label for="balcony_state2" class="">лоджия</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.balcony_state" value="балкон и лоджия" class="radio-nodot" type="radio" name="balcony_state" id="balcony_state3"/>                
+					                      <label for="balcony_state3" class="">балкон и лоджия</label>
+					                 </li>
+
+					              	 <li>
+					                     <input ng-model="vm.balcony_state" value="несколько балконов или лоджий" class="radio-nodot" type="radio" name="balcony_state" id="balcony_state4"/>                
+					                      <label for="balcony_state4" class="">несколько балконов или лоджий</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						
+
+						<div class="group-elements">
+							<label class="charac-label">Дверь</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="door_state" id="door_state1"/ class="radio-nodot" ng-model="vm.door_state" value="деревянная">
+					                     <label for="door_state1" class="">деревянная</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.door_state" value="металлическая" class="radio-nodot" type="radio" name="door_state" id="door_state2"/>                 
+					                     <label for="door_state2" class="">металлическая</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.door_state" value="бронированная" class="radio-nodot" type="radio" name="door_state" id="door_state3"/>                
+					                      <label for="door_state3" class="">бронированная</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Мебель</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="furniture_state" id="furniture_state1"/ class="radio-nodot" ng-model="vm.furniture_state" value="полностью мебелирована">
+					                     <label for="furniture_state1" class="">полностью мебелирована</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.furniture_state" value="частично мебелирована" class="radio-nodot" type="radio" name="furniture_state" id="furniture_state2"/>                 
+					                     <label for="furniture_state2" class="">частично мебелирована</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.furniture_state" value="пустая" class="radio-nodot" type="radio" name="furniture_state" id="furniture_state3"/>                
+					                      <label for="furniture_state3" class="">пустая</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Пол</label>
+							<div class="element-select">
+								 <ul>
+					                 <li>
+					                     <input type="radio" name="floor_state" id="floor_state1"/ class="radio-nodot" ng-model="vm.floor_state" value="линолеум">
+					                     <label for="floor_state1" class="">линолеум</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.floor_state" value="паркет" class="radio-nodot" type="radio" name="floor_state" id="floor_state2"/>                 
+					                     <label for="floor_state2" class="">паркет</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.floor_state" value="ламинат" class="radio-nodot" type="radio" name="floor_state" id="floor_state3"/>                
+					                      <label for="floor_state3" class="">ламинат</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.floor_state" value="дерево" class="radio-nodot" type="radio" name="floor_state" id="floor_state4"/>                
+					                      <label for="floor_state4" class="">дерево</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.floor_state" value="ковролан" class="radio-nodot" type="radio" name="floor_state" id="floor_state5"/>                
+					                      <label for="floor_state5" class="">ковролан</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.floor_state" value="плитка" class="radio-nodot" type="radio" name="floor_state" id="floor_state6"/>                
+					                      <label for="floor_state6" class="">плитка</label>
+					                 </li>
+					                 <li>
+					                     <input ng-model="vm.floor_state" value="пробковое" class="radio-nodot" type="radio" name="floor_state" id="floor_state7"/>                
+					                      <label for="floor_state7" class="">пробковое</label>
+					                 </li>
+					             </ul>
+							</div>
+						</div>
+
+						<div class="group-elements">
+							<label class="charac-label">Текст <br>объявления</label>
+							<div class="element-select">
+								<div class="warning-maxlength">Осталось {{2000-vm.flat_comment.length}} символов</div>
+								 <textarea class="flat-comment" ng-model="vm.flat_comment" maxlength="2000" ng-trim="false"></textarea>
+							</div>
+						</div>
+
+
+					</div>
+
+						<h3 class="with-line no-padding">Контактная информация</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Телефон<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<phonenumber-directive placeholder="myPrompt" model='myModel.phonenumber'>
+									</phonenumber-directive>
+								</div>
+
+							</div>
+							<div class="form-group row clearfix" ng-if="!vm.user">
+								<label class="col-sm-3 control-label">Эл. почта<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<input required type="email" name="email" class="form-control form-medium" ng-model="vm.owner_email">
+								</div>
+							</div>
+
+							<div class="form-group row clearfix" ng-if="!vm.user">
+								<label class="col-sm-3 control-label">Ваше имя<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<input required type="text" name="name" class="form-control form-medium" ng-model="vm.owner_firstname">
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="add-button-container">
+							<input type="submit" name="" class="submit_button" value="Опубликовать">
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+

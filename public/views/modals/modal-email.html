@@ -1,0 +1,26 @@
+<div class="modal">
+	<div class="modal-wrapper">
+		<span class="modal-close" ng-click="$hide()">
+		    <img src="../../img/cancel.svg" style="width: 100%; height: 100%;">
+		</span>
+		<span class="modal-title">Отправить письмо владельцу</span>
+		<div class="modal-form">
+			<form ng-submit="vm.sendEmail();">
+
+			<input type="email" ng-if="!vm.user" ng-model="vm.email" class="form-control form-medium" placeholder="Введите вашу почту" required>
+
+			<textarea class="student-about-comment" ng-model="vm.text" placeholder="Ваш текст..."></textarea>
+
+			<div ng-if="vm.user">
+				Ответ придет на:
+					
+				<input type="email" ng-model="vm.reply_email" class="form-control form-medium">
+				<span ng-model="vm.reply_email"></span>
+			</div>
+		
+			<input type="submit" name="" class="submit_button" value="Отправить">
+			</form>
+		</div>
+
+	</div>
+</div>

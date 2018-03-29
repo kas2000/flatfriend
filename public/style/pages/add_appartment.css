@@ -1,0 +1,158 @@
+.place-select{
+	height: 310px!important;
+	width: 250px;
+	border-color: #999;
+	font-size: 14px;
+	outline: none;
+	border: 1px solid #c2c2c2;
+}
+.place-select option{
+	padding: 5px;
+	font-size: 14px;
+}
+.droplet{
+	height: 500px;
+	width: 100%;
+}
+.leveled-select{
+	position: relative;
+	width: 260px;
+	padding: 0 4px 0 0;
+}
+.warning{
+	font-weight: 500;
+	padding-left: 15px;
+}
+.auto-control{
+	margin-left: 0; width: auto; padding-right: 25px;
+}
+.form-control.form-medium{
+	width: auto;
+	display: inline-block;
+}
+.form-control.form-small{
+	width: 100px;
+	display: inline-block;
+}
+.form-control.form-extra-small{
+	width: 55px;
+	display: inline-block;
+}
+ya-map{
+  display: block;
+  width: 950px;
+  height: 400px;
+}
+.group-elements{
+	display: flex;
+	align-items: center;
+	float: left;
+	width: 100%;
+}
+.group-elements.group-elements-top{
+	margin-top: 35px;
+}
+.charac-label{
+	padding-left: 15px;
+	width: 20%;
+	color: #666;
+	font-size: 14px;
+	float: left;
+	margin-right: 20px;
+	white-space: nowrap;
+	display: inline-block;
+	font-weight: 300
+}
+.charac-label span{
+	white-space: normal;
+	position: relative;
+}
+.element-select{
+	width: 80%;
+	display: block;
+	position: relative;
+}
+.element-select select{
+	position: relative;
+	padding: 0 25px 0 6px;
+	text-transform: none;
+}
+.muted-select{
+	display: none;
+}
+.element-select ul{
+	list-style:none;overflow:hidden;
+}
+.element-select ul li{
+	list-style:none;
+    float:left;
+    position:relative;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+}
+.element-select ul li:first-child{
+	padding-left: 0;
+}
+.element-select ul li label{
+	color: #000;
+	font-weight: 300;
+	padding: 2px 4px;
+}
+.element-select ul li input[type="checkbox"] {
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:100%;
+	opacity:0;
+}
+.element-select ul li input:checked + label {
+	background:#209e91;
+	color: #fff;
+}
+.radio-nodot{
+	display: none;
+}
+.flat-comment{
+	min-height: 180px;
+	font-size: 16px;
+	width: 80%;
+	border: 1px solid #999;
+	color: #000;
+	padding: 8px;
+}
+.warning-maxlength{
+	position: absolute;
+	width: 46%;
+	left: 30%;
+	bottom: -12px;
+	margin-left: 20px;
+	text-align: right;
+	color: #666;
+	font-size: 11px;
+}
+.phonenumber{
+	min-width: 200px;
+	border: 1px solid #000;
+}
+.required-sign{
+	color: #cb5757;
+	font-size: 20px;
+}
+.hint-star{
+	float: right;
+	font-size: 13px;
+}
+.price_label{
+	margin-left: 5px;
+}
+.radio .radio_no_changes{
+	position: static;
+	margin: 0;
+	margin-right: 5px;
+}
+.form-group .pay_frequency{
+	line-height: 29px;
+}

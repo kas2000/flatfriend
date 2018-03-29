@@ -1,0 +1,266 @@
+.signup-content{
+	background-color: #222B35;
+	min-height: 100vh;
+}
+.label-container{
+	padding: 0 95px;
+}
+.label-container.label_no_padding{
+	padding: 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.nopadding{
+	padding: 0;
+}
+.registration{
+	text-align: center;
+}
+.navbar-singup{
+	height: 66px;
+}
+.header-signup{
+	padding-top: 25px;
+}
+.half{
+	width: 50%;
+}
+.btn{
+	display: inline-block;
+	margin-bottom: 0px;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 6px 12px;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+}
+button{
+	font-family: inherit;
+	text-transform: none;
+	overflow: visible;
+
+}
+.btn-primary{
+	border-radius: 30px;
+	background-color: #27aae1;
+	border: none;
+	padding: 7px 25px;
+	font-size: 14px;
+	color: #fff;
+	position: relative;
+	font-weight: 600;
+	outline: none;
+}
+
+.btn-primary:hover{
+	background-color: #2e6da4;
+	transition: .3s ease-in-out;
+}
+header{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.menu{
+	border: none;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+.navbar-logo{
+	float: left;
+}
+
+.navbar-logo img{
+	display: block;
+}
+
+.nav{
+	float: right!important;
+	margin-right: -15px;
+	padding-left: 0;
+	list-style: none;
+}
+.signup-left{
+	float: right;
+	margin-right: 30px;
+}
+.signup-left a{
+	color: #209e91;
+	font-size: 16px;
+}
+.main-register{
+	width: 100%;
+	margin-top: 100px;
+}
+
+.row {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+
+.reg-form .form-group-gender{
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.select-control.big{
+	float: right;
+}
+
+.have-account{
+	float: left;
+}
+
+.radio-inline input[type=radio]{
+	position: absolute;
+	margin-left: -20px;
+}
+input[type=radio]{
+	padding: 0;
+	box-sizing: border-box;
+	margin: 4px 0 0;
+	line-height: normal;
+}
+.radio-inline{
+	position: relative;
+	display: inline-block;
+	padding-left: 20px;
+	margin-bottom: 0px;
+	font-weight: 400;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.row.padding{
+	padding: 0 60px;
+}
+.select-control{
+	margin-left: 20px;
+	outline: none;
+	border-radius: 30px;
+	box-shadow: none;
+	border: 1px solid #f1f2f2;
+	padding-left: 15px;
+	display: inline-block;
+	height: 34px;
+	line-height: 1.42857143;
+	margin-bottom: 10px;
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	width: 80px;
+	appearance:none;
+	-webkit-appearance: none;
+	color: #939598;
+	background: rgba(0, 0, 0, 0) url("../../img/down-arrow.svg") no-repeat scroll calc(100% - 10px) center / 8px auto;
+}
+.select-control.appartments{
+	width: auto;
+	padding-right: 25px;
+	
+}
+.select-control.big{
+	width: 100px;
+}
+
+.register-title{
+	width: 45%;
+	float: left;
+	padding: 0px 10px;
+}
+
+.intro-texts{
+	font-size: 14px;
+	color: #fff;
+	padding-top: 70px;
+}
+
+.intro-texts h1{
+	margin-bottom: 25px;
+	font-weight: 700;
+	color: #fff;
+	font-size: 36px;
+}
+
+.intro-texts-question {
+	margin-top: 25px;
+}
+
+.intro-texts button {
+	margin-top: 20px;
+	border-radius: 30px;
+	padding: 8px 20px;
+	width: 150px;
+}
+.reg-button{
+	margin-top: 15px;
+}
+.register-form{
+	width: 50%;
+	float: right;
+}
+
+.registration-container{
+	background-color: #fff;
+	box-shadow: 0 0 35px rgba(0,0,0, .4);
+	padding: 13px 70px 70px 60px;
+	border-radius: 6px;
+	position: relative;
+}
+.registration button{
+	border-radius: 30px;
+	float: left;
+}
+
+.reg-form .form-control{
+	background: #fff;
+	color: #939598;
+	border-radius: 30px;
+	box-shadow: none;
+	border: 1px solid #f1f2f2;
+	padding-left: 15px;
+}
+
+.form-control{
+	font-weight: 400;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	outline: none;
+	margin-bottom: 10px;
+}
+.form-control.signin{
+	width: 300px;
+	margin: 0 auto;
+}
+.form-control-half{
+	width: 45%;
+	float: left;
+}
+
+.form-control-right{
+	float: right;
+}
+
+.registration h3{
+	font-size: 24px;
+	color: #222;
+	font-weight: 500;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.registration p{
+	font-size: 13px;
+}
+.text-muted{
+	margin-top: 15px;
+	color: #656565;
+	margin-bottom: 15px;
+}
+.register-uni-top{
+	margin-top: 30px;
+}

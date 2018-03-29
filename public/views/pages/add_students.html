@@ -1,0 +1,160 @@
+
+
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Добавление объявления на поиск студентов</h1>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+					<form  ng-submit="vm.addStudent();">
+					<h3 class="with-line no-padding">Основная информация<p class="hint-star">Поля со звездочкой <span class="required-sign">*</span> — обязательные</p></h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Университет<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<input ng-model="vm.uni" disabled class="university">
+								</div>
+
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Курс<span class="required-sign"> *</span></label>
+								<div class="col-xs-4">
+									<input type="number" min="1" max="4" name="cost" class="form-control form-small" ng-model="vm.grade" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Языки<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control ng-not-empty ng-valid ng-dirty ng-touched open">
+										<span class="ui-select-match" placeholder="Выберите языки">
+											<span class="ui-select-match-item btn btn-default btn-xs" ng-repeat="skill in vm.skills track by $index">{{skill}}
+												<span>
+													<i ng-click="vm.delete(skill)" class="fa fa-times" aria-hidden="true"></i></span>
+											</span>
+											
+										</span>
+										<input type="search" class="ui-select-search input-xs ng-pristine ng-valid ng-empty ng-touched" ng-init="show=false" ng-click="show=!show;">
+									</div>
+									
+									<ul class="dropdown-selections" ng-if="show&&vm.languages.length>0" click-outside="vm.closeLanguages()">
+										<li class="ui-select-choices-group" ng-repeat="language in vm.languages track by $index" ng-click="vm.add(language);show=!show;">{{language}}
+										</li>
+									</ul>
+								</div>
+
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Родной город<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control ng-not-empty ng-valid ng-dirty ng-touched open">
+										<span class="ui-select-match" placeholder="Выберите город">
+											<span ng-if="vm.extra_city[0] !== undefined" class="ui-select-match-item btn btn-default btn-xs" ng-repeat="city in vm.extra_city track by $index">{{city}}
+												<span>
+													<i ng-click="vm.remove_city(city)" class="fa fa-times" aria-hidden="true"></i>
+												</span>
+											</span>
+											
+										</span>
+										<input type="search" class="ui-select-search input-xs ng-pristine ng-valid ng-empty ng-touched" ng-init="show_cities=false" ng-click="show_cities=!show_cities;">
+									</div>
+									
+									<ul class="dropdown-selections" ng-if="show_cities" click-outside="vm.closeCities()">
+										<input type="search" class="dropdown-search" ng-model="search" placeholder="Поиск города">
+										<li class="ui-select-choices-group" ng-repeat="city in vm.cities | filter:search track by $index" ng-click="vm.add_city(city);">{{city}}
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<h3 class="with-line no-padding">Дополнительная информация</h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Отношение к курению</label>
+								<div class="col-xs-4">
+									<select name="smoking" class="select-control auto-control" ng-model="smoking.type" ng-options="d.attitude as d.value for d in smokingAttitude"></select>
+								</div>
+
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Отношение к алкоголю</label>
+								<div class="col-xs-4">
+									<select name="alcohol" class="select-control auto-control" ng-model="alcohol.type" ng-options="d.attitude as d.value for d in alcoholAttitude"></select>
+								</div>
+							</div>
+
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Главное в людях</label>
+								<div class="col-xs-4">
+									<select name="behaviour" class="select-control auto-control" ng-model="behaviour.type" ng-options="d.behaviour as d.value for d in behaviourAttitude"></select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-xs-8 control-label">Кулинарные навыки</label>
+								<div class="col-xs-4">
+									<select name="cooking-skills" class="select-control auto-control" ng-model="cooking.type" ng-options="d.skill as d.value for d in cookingSkills"></select>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group row clearfix">
+								<label class="col-sm-3 control-label">Расскажите о себе</label>
+								<div class="col-sm-9">
+										<textarea ng-trim="false" maxlength="200" class="student-about-comment" ng-model="vm.student_comment" placeholder="Хобби, интересы, предпочтения"></textarea>
+										<div class="warning-maxlength no-absolute">Осталось {{200-vm.student_comment.length}} символов</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+
+
+					<h3 class="with-line no-padding">Фотографии</h3>
+					<div class="row">
+						<input type="file" name="studentImage" file-model="vm.file">
+
+					</div>
+
+						<div class="add-button-container">
+							<input type="submit" name="" class="submit_button" value="Опубликовать">
+						</div>
+
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+

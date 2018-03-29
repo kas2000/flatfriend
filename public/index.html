@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="flat_find">
+<head>
+
+
+    <base href="/">
+    <meta name="fragment" content="!">
+    <meta name="robots" content="index, follow">
+
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+    
+  	<!-- Styles -->
+	 <link href="style/all.css" rel="stylesheet">
+
+    
+
+<title>Flat Friend</title>
+
+
+</head>
+
+<body ng-controller="IndexCtrl as vm">
+
+
+
+
+  <div ng-include src="'views/components/header.html'" ng-if="!state.includes('signup')&&!state.includes('404')&&!state.includes('home')&&!state.includes('signin')"></div>
+  
+  <div ui-view></div>
+
+
+
+
+	 <!-- Scripts -->
+
+	 
+	<script src="js/vendor/ng.min.js"></script>
+	<script src="js/vendor/ng-route.min.js"></script>
+	<script src="js/vendor/ng-strap.js"></script>
+	<script src="js/vendor/ng-strap.min.js"></script>
+	<script src="js/vendor/ng-cookies.min.js"></script>
+	<script src="js/vendor/ng-resource.min.js"></script>
+	<script src="js/vendor/ng-resource.min.js"></script>
+	<script src="js/vendor/naif.base64.js"></script>
+  <script src="js/vendor/phone_number.js"></script>
+
+  <script src="js/ui-bootstrap-2.5.0.js"></script>
+  <script src="js/ui-bootstrap-tpls-2.5.0.js"></script>
+  <script src="js/ng-droplet.min.js"></script>
+  <script src="js/clickoutside.directive.js"></script>
+  <script src="js/socket/directive.socket.js"></script>
+  <script src="js/socket/socket.io.js"></script>
+  <script src="js/angular-ui-notification.min.js"></script>
+  <script src="js/ya-map-2.1.min.js"></script>
+  <script src="js/angular-sidebarjs.min.js"></script>
+
+  
+
+  <script src="app.js"></script>
+
+  <script src="js/pages/auth/service.auth.js"></script>
+  <script src="js/pages/auth/controller.signup.js"></script>
+  <script src="js/pages/auth/controller.signin.js"></script>
+
+  <script src="js/pages/main/controller.main.js"></script>
+  <script src="js/pages/home/controller.home.js"></script>
+  <script src="js/pages/index/controller.index.js"></script>
+
+  <script src="js/pages/landlord/controller.landlord_dashboard.js"></script>
+
+  <script src="js/pages/appartments/controller.appartments.js"></script>
+  <script src="js/pages/appartments/controller.add-appartment.js"></script>
+  <script src="js/pages/appartments/controlller.appartments_ad.js"></script>
+  <script src="js/pages/appartments/controller.email.js"></script>
+
+ 
+  <script src="js/pages/student/controller.students_ad.js"></script>
+  <script src="js/pages/student/controller.full_student_photo.js"></script>
+  <script src="js/pages/student/controller.student_dashboard.js"></script>
+  <script src="js/pages/student/controller.students.js"></script>
+  <script src="js/pages/student/controller.add_students.js"></script>
+  <script src="js/pages/student/controller.edit_student.js"></script>
+
+  <script src="js/pages/user_ads/controller.user_ads.js"></script>
+
+  <script src="js/pages/map/controller.map.js"></script>
+  
+
+  <script src="js/pages/chat/controller.chat.js"></script>
+  <script src="js/pages/chat/controller.modal_chat.js"></script>
+
+  <script src="js/pages/unknown/controller.unknown.js"></script>
+
+  <script src="js/services/controller.data.js"></script>
+  <script src="js/services/controller.images.js"></script>
+  <script src="js/services/controller.edit.js"></script>
+ 
+
+ 
+
+
+
+
+
+</body>
+</html>

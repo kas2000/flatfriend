@@ -1,0 +1,60 @@
+
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+		<div class="page_block">
+			<div class="appartment-map">
+				<ya-map ya-after-init="afterInit($target)" ya-zoom="12">
+				</ya-map>
+			</div>
+		</div>
+
+		<p class="map_hint">Выбранная квартира появится ниже:</p>
+		
+
+		<div class="page_block mapinfo_wrap">
+			<div class="appartment_mapinfo">
+
+				<div class="mapinfo_img_container">
+					<img ng-if="data" ng-src="{{data.main_image}}">
+				</div>
+
+				<div class="mapinfo_maininfo_container">
+					<h2 ui-sref="appartments_ad({id: data._id})" ng-if="data" class="mapinfo_rooms">{{data.rooms + '-комнатная квартира'}}</h2>
+					<p ng-if="data" class="mapinfo_payment">{{data.pay_frequency}}</p>
+					<p ng-if="data" class="mapinfo_payment flat_price">{{data.price + " ₸"}}</p>
+
+					<div class="mapinfo_flatinfo_wrap" ng-if="data">
+						<div class="mapinfo_flatinfo">
+							<p>{{'Год постройки: '+data.year}}</p>
+							<p>{{'Местоположение: '+data.street+', '+data.house_number}}</p>
+							<p>{{'Телефон: '+data.phone_number}}</p>
+						</div>
+						<div class="mapinfo_flatinfo">
+							<p>{{'Общая площадь: '+data.all_area+'м2'}}</p>
+							<p>{{'Площадь кухни: '+data.kitchen_area+'м2'}}</p>
+							<p>{{'Жилая площадь: '+data.living_area+'м2'}}</p>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="mapinfo_addinfo_container">
+					<p>
+						<span ng-if="data.home_type">{{data.home_type+' дом, '}}</span>
+						<span ng-if="data.flat_state">{{data.flat_state+' состояние, '}}</span>
+						<span ng-if="data.balcony_state">{{data.balcony_state+', '}}</span>
+						<span ng-if="data.door_state">{{data.door_state+' дверь, '}}</span>
+						<span ng-if="data.floor_state">{{data.floor_state+', '}}</span>
+						<span ng-if="data.furniture_state">{{data.furniture_state+', '}}</span>
+						<span ng-if="data.internet_state">{{data.internet_state+', '}}</span>
+						<span ng-if="data.phone_state">{{data.phone_state+' телефон, '}}</span>
+						<span ng-if="data.wc_state">{{data.wc_state+' санузел'}}</span>
+						
+						
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+<div class="al-main" ng-class="{'full': showAside}">
+	<div class="al-content">
+
+		<div class="content-top">
+			<h1>Ваши объявления</h1>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="panel-content">
+
+					<div class="user_ad-container" ng-if="vm.noAds == true">
+						No ads
+					</div>
+
+					<div ng-if="vm.student" class="user_ad-container" ng-repeat="ad in vm.student track by $index">
+						<div class="user_ad-top">
+							<ul>
+								<li>Заголовок</li>
+							</ul>
+						</div>
+
+						<div class="user_ad">
+							<div class="user_ad-img">
+								<img ng-src="{{ad.image}}">
+							</div>
+
+							<div class="user_ad-title">
+								<span class="firstname" ng-bind="ad.student_firstname"></span>
+								<span class="action view"><i class="fa fa-eye" aria-hidden="true"></i>Просмотреть</span>
+								<span class="action" ng-click="vm.editStudentAd(ad)"><i class="fa fa-pencil" aria-hidden="true"></i>Редактировать</span>
+								<span class="action delete" ng-click="vm.deleteStudentAd(ad)"><i class="fa fa-trash-o" aria-hidden="true"></i>Деактивировать</span>
+							</div>
+
+						</div>
+					</div>
+
+					<div ng-if="vm.flat" class="user_ad-container" ng-repeat="ad in vm.flat track by $index">
+						<div class="user_ad-top">
+							<ul>
+								<li>Заголовок</li>
+								<li>Цена в сутки</li>
+							</ul>
+						</div>
+
+						<div class="user_ad">
+							<div class="user_ad-img">
+								<!-- <img ng-src="{{ad.image}}"> -->
+								<img src="../../img/home/1.jpg">
+							</div>
+
+							<div class="user_ad-title">
+								<span class="firstname" ng-bind="ad.rooms + '-комнатная квартира'"></span>
+								<span class="action view" ui-sref="appartments_ad({id: ad._id})"><i class="fa fa-eye" aria-hidden="true"></i>Просмотреть</span>
+								<span class="action"><i class="fa fa-pencil" aria-hidden="true"></i>Редактировать</span>
+								<span class="action delete" ng-click="vm.deleteFlatAd(ad);"><i class="fa fa-trash-o" aria-hidden="true"></i>Деактивировать</span>
+							</div>
+
+							<!-- <p class="price" ng-bind="ad.price + 'тг.'"></p> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

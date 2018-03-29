@@ -1,0 +1,129 @@
+
+<div class="signup-content">
+		<header class="header-inverse header-signup">
+				<nav class="navbar-signup menu">
+					<div class="container">
+						<a class="brand" href="#" ui-sref="appartments">
+		   					<span>Flat</span>Friend
+		  				</a>
+
+		  				<div class="signup-left">
+		  					<a href="#" ui-sref="appartments">На главную</a>
+		  				</div>
+
+					</div>
+				</nav>
+		</header>
+
+		<div class="main-register">
+			<div class="container">
+				<div class="register-title">
+					<div class="intro-texts">
+						<h1>Пройдите регистрацию</h1>
+						<p>FlatFriend - это социальный проект, который помогает студентам находить сожителей, а так же позволяет арендодателям добавлять объявления о квартирах. Желаем вам успешного поиска :)</p>
+						<p class="intro-texts-question">Уже зарегестрированы?</p>
+						<a class="submit_button medium_button" ui-sref="signin">Войти</a>
+					</div>
+				</div>
+
+				<div class="register-form">
+					<div class="registration-container">
+						<div class="registration">
+							<h3>Регистрация</h3>
+							<p class="text-muted">Не упускай момент, найди себе сожителя!</p>
+
+							<form ng-submit="vm.signUp();">
+
+								<div class="row">
+									<input ng-model="vm.email" class="form-control form-control-half form-control-right" type="email" name="email" value="" placeholder="Ваша почта" required>
+									<input ng-model="vm.password" class="form-control form-control-half form-control-right" type="password" name="password" value="" placeholder="Ваш будущий пароль" required>
+									<input ng-model="vm.password_confirm" class="form-control form-control-half form-control-right" type="password" name="password" value="" placeholder="Повторите ваш будущий пароль" required>
+									<input ng-model="vm.firstname" class="form-control form-control-half" type="text" name="firstname" value="" placeholder="Ваше имя" required>
+									<input ng-model="vm.lastname" class="form-control form-control-half form-control-right" type="text" name="lastname" value="" placeholder="Ваша фамилия" required>
+								</div>
+
+							<p class="text-muted">Дата рождения</p>
+							<div class="row padding">
+									<select name="birthday" class="select-control" ng-model="vm.day" required ng-options="d.day as d.name for d in days">
+										<option value="">День</option>
+									</select>
+
+
+									<select name="month" class="select-control big" ng-model="vm.month" required ng-options="d.month as d.name for d in months">
+										<option value="">Месяц</option>
+									</select>
+
+									<select name="year" class="select-control" ng-model="vm.year" required ng-options="d.year as d.name for d in years">
+										<option value="">Год</option>
+									</select>
+							</div>
+
+							<div ng-show="vm.gender">
+									<p class="text-muted">Ваш пол</p>
+									<div class="row">
+										<div class="label-container">
+											<label class="radio-inline custom-radio nowrap clearfix">
+												<input ng-model="vm.gender" type="radio" name="gender" value="Мужской">
+												<span>Мужской</span>
+											</label>
+
+											<label class="radio-inline custom-radio nowrap margin-left">
+												<input ng-model="vm.gender" type="radio" name="gender" value="Женский">
+												<span>Женский</span>
+											</label>
+										</div>
+									</div>
+
+									<p class="text-muted">Кто вы?</p>
+									<div class="row">
+										<div class="label-container">
+											<label class="radio-inline custom-radio nowrap clearfix">
+												<input ng-model="vm.role" type="radio" name="role" value="landlord">
+												<span>Арендодатель</span>
+											</label>
+
+											<label class="radio-inline custom-radio nowrap margin-left">
+												<input ng-model="vm.role" type="radio" name="role" value="student">
+												<span>Студент</span>
+											</label>
+										</div>
+									</div>
+							</div>
+
+							<div class="row register-uni-top" ng-show="vm.showUniversity">
+										<label class="col-sm-3 control-label">Университет<span class="required-sign"> *</span></label>
+								<div class="col-sm-9">
+									<div class="ui-select-container ui-select-multiple ui-select-bootstrap dropdown form-control ng-not-empty ng-valid ng-dirty ng-touched open">
+										<span class="ui-select-match" placeholder="Выберите языки">
+											<span ng-if="vm.universities_extra[0] !== undefined" class="ui-select-match-item btn btn-default btn-xs" ng-repeat="university in vm.universities_extra track by $index">{{university.uni_name}}
+												<span>
+													<i ng-click="vm.remove_university(university)" class="fa fa-times" aria-hidden="true"></i>
+												</span>
+											</span>
+											
+										</span>
+										<input type="search" class="ui-select-search input-xs ng-pristine ng-valid ng-empty ng-touched" ng-init="show_universities=false" ng-click="show_universities=!show_universities;">
+									</div>
+
+									
+									<ul class="dropdown-selections" ng-if="show_universities" click-outside="vm.closeUni()">
+										<input type="search" class="dropdown-search" ng-model="search" placeholder="Поиск университета">
+										<li class="ui-select-choices-group" ng-repeat="university in vm.universities | filter:search track by $index" ng-click="vm.add_university(university);">{{university.uni_name}}
+										</li>
+									</ul>
+								</div>
+							</div>
+						
+
+							<div class="reg-button">
+								<input type="submit" name="reg-submit" class="submit_button" value="Зарегестрироваться">
+							</div>
+
+						</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

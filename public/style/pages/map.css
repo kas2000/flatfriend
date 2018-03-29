@@ -1,0 +1,56 @@
+.map_hint {
+	width: 100%;
+	margin-top: 15px; 
+	font-size: 20px; 
+	text-align: center;
+}
+.mapinfo_wrap {
+	width: 100%; 
+	height: 200px;
+}
+.appartment_mapinfo {
+	padding: 20px; display: flex;
+}
+.mapinfo_img_container {
+	width: 300px; 
+	height: 160px;
+}
+.mapinfo_img_container img{
+	width: 100%; 
+	height: 100%;
+}
+.mapinfo_maininfo_container {
+	width: 41%; 
+	padding: 10px; 
+	text-align: center;
+}
+.mapinfo_rooms {
+	font-size: 19px; 
+	color: #85144b; 
+	margin:0; 
+	cursor: pointer; 
+	display: inline-block;
+}
+.mapinfo_rooms:hover {
+	text-decoration: underline;
+}
+.mapinfo_payment {
+	display: inline-block;
+}
+.mapinfo_payment.flat_price{
+	display: inline-block; 
+	font-size: 22px; 
+	color: #43a511
+}
+.mapinfo_flatinfo_wrap {
+	display: flex;
+}
+.mapinfo_flatinfo {
+	width: 50%;
+}
+.mapinfo_addinfo_container{
+	padding: 10px; 
+	width: 33%; 
+	text-align: center; 
+	line-height: 35px;
+}

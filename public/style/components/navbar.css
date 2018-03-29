@@ -1,0 +1,176 @@
+.navbar{
+  background-color: #1F2B35;
+  height: 66px;
+  box-shadow: 2px 0 3px rgba(0,0,0,.5);
+}
+.brand.small{
+  font-size: 30px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.brand{
+  margin: 0;
+  display: block;
+  float: left;
+  font-size: 35px;
+  margin-left: 22px;
+  color: #fff;
+  font-family: Roboto,sans-serif;
+  white-space: nowrap;
+  transition: .2s ease-in-out;
+}
+.brand:hover{
+  color: #209e91;
+  transition: .2s ease-in-out;
+}
+.brand span{
+  color: #209e91;
+}
+.bars{
+  margin-top: 22px;
+  margin-left: 18px;
+  float: left;
+}
+.bars i{
+   transition: .3s ease-in-out;
+  color: #fff;
+  font-size: 20px;
+}
+.bars:hover i{
+  transition: .3s ease-in-out;
+  color: #dfb81c;
+}
+.questions-section{
+  float: right;
+  margin-right: 20px;
+  line-height: 66px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #fff;
+}
+.questions-section a{
+  color: #209e91;
+  transition: color .2s ease;
+}
+.questions-section a:last-child{
+      padding: 0 20px;
+}
+.questions-section a:hover{
+  text-decoration: none;
+  color: #4C9B91;
+}
+.user-profile{
+  margin-top: 10px;
+  margin-right: 20px;
+  float: right;
+  margin-left: auto;
+  min-width: 170px;
+}
+.user-profile i{
+  color: #fff;
+  font-size: inherit;
+}
+.user-avatar-container{
+  float: right;
+}
+.user-avatar-container .user-avatar{
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+.message-icons{
+  float: right;
+  padding: 0;
+  list-style: none;
+  margin: 10px 47px 0 0;
+}
+.message-icons li::first-child{
+  margin-left: 0;
+}
+.message-icons li{
+  list-style: none;
+  float: left;
+  margin-left: 30px;
+}
+.message-icons li > a{
+  color: #fff;
+  font-size: 12px;
+  position: relative;
+}
+.message-icons li > a:hover{
+  color: #D7605C;
+}
+.message-icons li > a span{
+  display: inline-block;
+  min-width: 10px;
+  padding: 2px 4px;
+  color: #fff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 13px;
+  text-shadow: none;
+  line-height: 11px;
+  background-color: #e85656;
+  position: absolute;
+  top: -5px;
+  right: -14px;
+  font-size: 11px;
+}
+.message-icons li > a .green{
+  background-color: #209e91;
+}
+
+.modified{
+    left: inherit!important;
+    right: 0px!important;
+    position: absolute;
+    top: 60px;
+    display: block;
+    visibility: visible;
+    width: 120px;
+    background: #fff;
+    z-index: 900;
+    padding: 0;
+}
+
+.modified li {
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+.modified li:hover {
+    background: #F5F8F9;
+}
+.triangle-with-shadow{
+  position: absolute;
+  overflow: hidden;
+  width: 34px; 
+  height: 15px;
+  top: -15px; 
+  right: 24px;
+}
+.triangle-with-shadow:after{
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  top: 12px;
+  left: 5px;
+
+}
+
+
+
+
+
+
+
+
+
+
