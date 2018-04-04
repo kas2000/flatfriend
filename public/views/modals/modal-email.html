@@ -5,7 +5,7 @@
 		</span>
 		<span class="modal-title">Отправить письмо владельцу</span>
 		<div class="modal-form">
-			<form ng-submit="vm.sendEmail();">
+			<form ng-submit="vm.sendEmail();$hide()">
 
 			<input type="email" ng-if="!vm.user" ng-model="vm.email" class="form-control form-medium" placeholder="Введите вашу почту" required>
 

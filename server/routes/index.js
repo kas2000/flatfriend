@@ -5,7 +5,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var path = require("path");
 var User = require("../models/User.js");
 var io = require("socket.io")();
+var multer = require('multer');
+var fs = require("fs");
+var mkdirp = require('mkdirp');
+var path = require("path");
 
+var upload = multer({dest:"./public/img/user_avatars/"});
 
 passport.use(new LocalStrategy({ usernameField: 'email' },
     function( email, password, done) {
@@ -106,7 +111,8 @@ router.post('/api/login', passport.authenticate('local'), function(req, res) {
 
 
 
-router.post('/api/signup', function(req, res, next){
+router.post('/api/signup', upload.single('avatar'), function(req, res, next){
+    console.log(req.files);
            var user = new User({
              firstname: req.body.firstname,
              lastname: req.body.lastname,
@@ -121,16 +127,22 @@ router.post('/api/signup', function(req, res, next){
              uni_lat: req.body.uni_lat,
              uni_long: req.body.uni_long,
              quick: req.body.quick
-           });       
-           user.save(function(err, user){
+           });   
+
+        var tempPath = req.file.path;
+        var targetPath = path.resolve('public/img/user_avatars/' + user._id +'.'+ req.file.originalname.split('.').slice(-1).pop());
+        fs.rename(tempPath, targetPath, function(err){
+            if(err) return res.status(400).end();
+            user.avatar = '/img/user_avatars/' + user._id +'.'+ req.file.originalname.split('.').slice(-1).pop();
+            user.save(function(err, user){
              req.login(user, function(err) {
                   return res.json(user);
               });
-           })
+            })
         
-    });
+        });
 
-
+});
 
 
 

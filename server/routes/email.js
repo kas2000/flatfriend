@@ -10,7 +10,7 @@ router.post('/', function(req, res, next){
     port: 25,
     auth:{
         user: 'kyzaibekk@gmail.com',
-        pass: 'jokermms1224'
+        pass: 'Zhangir1224123123'
     }
 	});
 
@@ -18,8 +18,7 @@ router.post('/', function(req, res, next){
 	    from: '"Flat Find" <asd@gmail.com>', // sender address
 	    to: 'kyzaibekk@gmail.com', // list of receivers
 	    subject: 'Flat Find', // Subject line
-	    text: req.body.text, // plain text body
-	    // html: ({path: 'islamic_center/index.html'}), // html body
+	    text: req.body.text // plain text body
 
 	};
 

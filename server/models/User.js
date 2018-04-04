@@ -28,7 +28,8 @@ var userSchema = new mongoose.Schema({
     quick: Boolean,
     isStreaming: { type: Boolean, default: false},
     streamId: String,
-    active: { type: Boolean, required: true, default: false}
+    active: { type: Boolean, required: true, default: false},
+    avatar: String
 });
 
 

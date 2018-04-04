@@ -17,6 +17,7 @@ var Student = require("./server/models/Student.js");
 var Message = require("./server/models/Message.js");
 var Flat = require("./server/models/Flat.js");
 var cron = require('cron');
+var browserify = require('browserify-middleware');
   
 
 
@@ -73,6 +74,9 @@ app.use(session({ secret: 'your secret here',
 // 	// }
 // });
 
+app.get('/js/file.js', browserify(['simple-peer', 'socket.io-client', {'./public/views/pages/file.js': {run:true}}]));
+
+
 
 app.get('/api/rooms/:user_id', (req, res, next)=>{
 	User.findById(req.params.user_id).populate('rooms')
@@ -121,18 +125,20 @@ app.post('/api/rooms/:user_id', (req, res, next) =>{
 								reciever: req.body.user[a],
 								type: 0,
 								group_room: room.group_room,
-								sender_name: req.body.sender_name
+								sender_name: req.body.sender_name,
+								sender_avatar: req.body.sender_img
 							});
 						}	
 					}else{
-						console.log(req.body.sender_name+"<=====ETO sender_name");
+						console.log(req.body.sender_img+"<=====ETO sender_name");
 						io.sockets.emit(req.body.user, {
 								room: room,
 								user_id: user._id,
 								reciever: req.body.user,
 								type: 0,
 								group_room: room.group_room,
-								sender_name: req.body.sender_name
+								sender_name: req.body.sender_name,
+								sender_avatar: req.body.sender_img
 						});
 					}
 					
@@ -234,6 +240,10 @@ var socketServer = io.attach(server);
 
 		socket.on('self_connect', function(data){
 			socket.join(data.user_id);
+		});
+
+		socket.on('gotUser', function(user, data){
+			io.sockets.emit('connectPeer', data);
 		});
 
 

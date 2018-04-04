@@ -2,9 +2,9 @@ angular
 	.module('flat_find')
     .controller('SignUpCtrl', SignUpCtrl);
 
-    SignUpCtrl.$inject = ['$http', '$state', '$rootScope', '$scope', 'Auth', 'DataService'];
+    SignUpCtrl.$inject = ['$http', '$state', '$rootScope', '$scope', 'Auth', 'DataService', 'Notification'];
 
-   	function SignUpCtrl($http, $state, $rootScope, $scope, Auth, DataService) {
+   	function SignUpCtrl($http, $state, $rootScope, $scope, Auth, DataService, Notification) {
     	
    	var vm = this;
 
@@ -120,6 +120,27 @@ angular
       vm.universities_extra.splice(0, 1);
     }
 
+    $scope.$watch('vm.avatar', function(){
+        console.log(vm.avatar);
+    });
+
+    
+    $scope.interface = {};
+    $scope.$on('$dropletReady', function whenDropletReady() {
+      $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif']);
+      // $scope.interface.useArray();
+    });
+
+    var avatar = [];
+    var avatar_final = {};
+    $scope.$on('$dropletFileAdded', function() {
+        avatar = $scope.interface.getFiles();
+        avatar_final = avatar[0];
+        console.log(avatar_final.file);
+    });
+
+  
+
 		vm.signUp = function(){
 			if(!vm.gender){
                 vm.gender = !vm.gender; 
@@ -127,35 +148,62 @@ angular
                     if(vm.role == 'student'){
                         vm.showUniversity = !vm.showUniversity;
                         if(vm.universities_extra[0] != null){
-                            Auth.signup({
-                                email: vm.email,
-                                password: vm.password,
-                                firstname: vm.firstname,
-                                lastname: vm.lastname,
-                                day: vm.day,
-                                month: vm.month,
-                                year: vm.year,
-                                gender: vm.gender,
-                                role: vm.role,
-                                university: uni_name,
-                                uni_lat: uni_lat,
-                                uni_long: uni_long,
-                                quick: false
-                            });
+                            var data = new FormData();
+                            data.append("email", vm.email);
+                            data.append("password", vm.password);
+                            data.append("firstname", vm.firstname);
+                            data.append("lastname", vm.lastname);
+                            data.append("day", vm.day);
+                            data.append("month", vm.month);
+                            data.append("year", vm.year);
+                            data.append("gender", vm.gender);
+                            data.append("role", vm.role);
+                            data.append("university", uni_name);
+                            data.append("uni_lat", uni_lat);
+                            data.append("uni_long", uni_long);
+                            data.append("quick", false);
+                            data.append("avatar", avatar_final.file);
+                            const option = {
+                                transformRequest: angular.identity,
+                                headers:{"Content-Type":undefined} 
+                            };
+
+                            $http.post('/api/signup', data, option)
+                                .success(function(data){
+                                    Notification.info({message: 'Добро пожаловать, '+data.firstname, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
+                                     $rootScope.currentUser = data;
+                                     $state.go('appartments');
+                                     console.log(data);
+                                }).error(function(data){
+                                    Notification.error({message: data.msg, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
+                                })
                         }
                     }else{
-                        Auth.signup({
-                            email: vm.email,
-                            password: vm.password,
-                            firstname: vm.firstname,
-                            lastname: vm.lastname,
-                            day: vm.day,
-                            month: vm.month,
-                            year: vm.year,
-                            gender: vm.gender,
-                            role: vm.role,
-                            quick: false
-                        });
+                        var data = new FormData();
+                            data.append("email", vm.email);
+                            data.append("password", vm.password);
+                            data.append("firstname", vm.firstname);
+                            data.append("lastname", vm.lastname);
+                            data.append("day", vm.day);
+                            data.append("month", vm.month);
+                            data.append("year", vm.year);
+                            data.append("gender", vm.gender);
+                            data.append("role", vm.role);
+                            data.append("quick", false);
+                            data.append("avatar", avatar_final.file);
+                            const option = {
+                                transformRequest: angular.identity,
+                                headers:{"Content-Type":undefined} 
+                            };
+                        $http.post('/api/signup', data, option)
+                                .success(function(data){
+                                    Notification.info({message: 'Добро пожаловать, '+data.firstname, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
+                                     $rootScope.currentUser = data;
+                                     $state.go('appartments');
+                                     console.log(data);
+                                }).error(function(data){
+                                    Notification.error({message: data.msg, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
+                                })
                     }
                 }
 		}

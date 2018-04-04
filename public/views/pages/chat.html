@@ -53,15 +53,8 @@
 
 
 	<div class="pure-u-2-3" id="video-container">
-    	<div id="videoStream"><video id="their-video" autoplay controls style="width: 500px; height: 400px;"></video>
-        <video id="my-video" muted="true" autoplay controls style="width: 500px; height: 400px;"></video></div>
-        <button ng-click="vm.getStreaming()">Check</button>
-        <button ng-click="DisconnectUser();">Disconnect</button>
-        <div ng-repeat="streamer in vm.streamers track by $index">
-        	<h2 ng-bind="streamer.firstname+' Готов к звонку! '"></h2>
-        	<button ng-click="vm.callUser(streamer.streamId)">Call</button>
-        	<button ng-if="connect == 1" ng-click="vm.end();">End Call</button>
-        </div>
+		<video id="video-call" autoplay controls style="height: 300px; width: 500px;"></video>
+    	<video id="video-call-initiator" autoplay controls style="height: 300px; width: 500px;"></video>
     </div>
 
 
@@ -71,7 +64,7 @@
 							<img class="login-form__close" src="../../img/cancel.svg" ng-click="vm.declineRoom()">
 							<span class="modal-chat_title">{{vm.sender_name + " пригласил'a вас на чат"}}</span>
 							<div class="modal-chat_img_container">
-								<img src="../../img/3.jpg" class="modal-chat_img">
+								<img ng-src="{{vm.sender_img}}" class="modal-chat_img">
 							</div>
 							<div class="modal-chat_buttons">
 								<button class="filtration-button" ng-click="vm.declineRoom()">Отказать</button>

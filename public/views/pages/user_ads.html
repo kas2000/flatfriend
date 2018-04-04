@@ -27,7 +27,7 @@
 
 							<div class="user_ad-title">
 								<span class="firstname" ng-bind="ad.student_firstname"></span>
-								<span class="action view"><i class="fa fa-eye" aria-hidden="true"></i>Просмотреть</span>
+								<span class="action view" ui-sref="students_ad({id: ad._id})"><i class="fa fa-eye" aria-hidden="true"></i>Просмотреть</span>
 								<span class="action" ng-click="vm.editStudentAd(ad)"><i class="fa fa-pencil" aria-hidden="true"></i>Редактировать</span>
 								<span class="action delete" ng-click="vm.deleteStudentAd(ad)"><i class="fa fa-trash-o" aria-hidden="true"></i>Деактивировать</span>
 							</div>

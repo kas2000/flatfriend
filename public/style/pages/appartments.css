@@ -67,6 +67,9 @@
 	font-size: 14px;
 	font-weight: 300;
 }
+.flat-sidestatus{
+	text-align: right;
+}
 .filtration-items{
 	list-style: none;
 	width: 100%;

@@ -22,19 +22,11 @@ angular
         vm.new_messages = [];
         vm.flats = [];
 
-// Compatibility shim
-        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-//VideoChat Initialization===============================
-        var peer = null;
-        vm.streamers = [];
-        var peerApiKey = 'w35b9kn366y4aemi';
-        $scope.stremId = null;
-        $scope.isDisabled = true;
-        $scope.connect = 0;
-        setUpPeer();
-        var videoStream = document.getElementById('videoStream');
-        var room_id;
+
+vm.videoChat = function(){
+    mySocket.emit('gotUser', $rootScope.currentUser._id, 0);
+}
 
 //Вытаскиваем избранных студентов ===========================================================
         // $http.get('/api/fav_student/')
@@ -167,7 +159,9 @@ angular
                 $scope.$apply(function(){
                     $scope.isAcceptModal = true;
                     $scope.invite_data = data;
+                    console.log(data.sender_avatar);
                     vm.sender_name = data.sender_name;
+                    vm.sender_img = data.sender_avatar;
                 }); 
             } else {
                 console.log(data);
@@ -181,153 +175,6 @@ angular
             console.log(data);
         }); 
 
-//VideoChat ============================================================================================================================
-
-    vm.user = $rootScope.currentUser;
-
-    function setUpPeer() {
-        peer = new Peer({
-            key: peerApiKey,
-            debug: 3
-        });
-
-        peer.on('open', function() {
-            // console.log(peer.id);
-            UpdateStreamId(peer.id);
-            // getStreaming();
-        });
-
-        peer.on('call', function(call) {
-            // Answer the call automatically (instead of prompting user) for demo purposes
-            call.answer(window.localStream);
-            answer(call);
-        });
-
-    }
-
-    function UpdateStreamId(id) {
-        $scope.streamId = id;
-        $scope.isDisabled = false;
-        $scope.$apply();
-    }
-
-    vm.videoChat = function(){
-        if($scope.connect == 0) {
-            var my_video = angular.element(document.getElementById('my-video'));
-            console.log(my_video);
-            navigator.getUserMedia({
-                audio: true,
-                video: true
-            }, function(stream) {
-                my_video.prop('src', URL.createObjectURL(stream));
-                window.localStream = stream;
-                streamUser();
-                // step2();
-                // videoStream.show();
-                $scope.connect = 1;
-            }, function() {
-                console.log("Streaming error!");
-            });
-
-        } else {
-            peer.disconnect();
-            DisconnectUser();
-            window.localStream.getVideoTracks()[0].stop();
-            $scope.connect = 0;
-        }
-    }
-
-
-    function streamUser() {
-        $http.put('/api/user/'+vm.user._id+'/'+$scope.streamId, {user:vm.user})
-            .success(function(data) {
-                getStreaming();
-            }).error(function(err) {
-                console.log(err);
-            })
-    }
-
-    
-    function getStreaming() {
-        $http.get('/api/user/streaming/'+room_id+'/'+vm.user)
-            .success(function(data) {
-                // console.log(data);
-                for(var i=0; i<data.length; i++){
-                    if(data[i]._id == vm.user._id){
-                        console.log("Can't check myself");
-                    }else{
-                        if(data[i].isStreaming == true){
-                            vm.streamers.push(data[i]);
-                        }
-                    }
-                }
-            }).error(function(err) {
-                console.log(err);
-            })
-    }
-
-    vm.callUser = function(id) {
-        var call = id;
-        step3(call);
-    }
-
-    var their_video = angular.element(document.getElementById('their-video'));
-
-    function step3(id) {
-            // Hang up on an existing call if present
-            var outgoingCall = peer.call(id, window.localStream);
-            if (window.existingCall) {
-                window.existingCall.close();
-            }
-            // Wait for stream on the call, then set peer video display
-            outgoingCall.on('stream', function(stream) {
-                their_video.prop('src', URL.createObjectURL(stream));
-            });
-
-            // UI stuff
-            window.existingCall = outgoingCall;
-    }
-
-    function answer(id) {
-            // Hang up on an existing call if present
-            var outgoingCall = id;
-            if (window.existingCall) {
-                window.existingCall.close();
-            }
-            // Wait for stream on the call, then set peer video display
-            outgoingCall.on('stream', function(stream) {
-                their_video.prop('src', URL.createObjectURL(stream));
-            });
-
-            // UI stuff
-            window.existingCall = outgoingCall;
-    }
-
-    vm.end = function() {
-        window.existingCall.close();
-        // getStreaming();
-        DisconnectUser();
-    }
-
-    $scope.DisconnectUser = function() {
-        $http.put('/api/user/disconnect/'+vm.user._id)
-            .success(function(data){
-                console.log(data);
-            }).error(function(err){
-                console.log(err);
-            })
-    }
-
-
-
-    // vm.getStreaming = function(){
-    //      $http.get('/api/user/streaming/'+room_id+vm.user)
-    //         .success(function(data) {
-    //             console.log(data);
-    //         }).error(function(err) {
-    //             console.log(err);
-    //         })
-    // }
 
 
     };

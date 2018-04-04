@@ -32,13 +32,14 @@ angular
             }
         };
 
-
+console.log($rootScope.currentUser.avatar);
         vm.groupChat = function(){
             var data = {
                 title: vm.title,
                 user: vm.room_participants,
                 group_room: true,
-                sender_name: $rootScope.currentUser.firstname
+                sender_name: $rootScope.currentUser.firstname,
+                sender_img: $rootScope.currentUser.avatar
             }
             $http.post('/api/rooms/'+$cookies.getObject('user')._id, data)
                 .success(function(response){

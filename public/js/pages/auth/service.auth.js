@@ -15,18 +15,6 @@ angular
     
         
         return {
-            
-            signup: function(user){
-                $http.post('/api/signup', user)
-                    .success(function(data){
-                        Notification.info({message: 'Добро пожаловать, '+data.firstname, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
-                         $rootScope.currentUser = data;
-                         $state.go('appartments');
-                         console.log(data);
-                    }).error(function(data){
-                        Notification.error({message: data.msg, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
-                    })
-            },
             login: function(user){
                 $http.post('/api/login', user)
                     .success(function(data){

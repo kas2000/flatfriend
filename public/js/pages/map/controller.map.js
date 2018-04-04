@@ -58,8 +58,9 @@ angular
 	        	var current_placemark = e.get('target');
 	        	current_placemark.balloon.open();
 				var coords = e.get('target').geometry.getCoordinates();
-		        getFlatInfo(coords);
-		        map.balloon.open(coords, "Info");
+		        var info = getFlatInfo(coords);
+		        map.balloon.open(coords, flat_data_map.street + ' ' + flat_data_map.cross_street + ' ' + flat_data_map.pay_frequency + ' ' + flat_data_map.price + 'тг');
+
 		    });
         }
 

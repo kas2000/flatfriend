@@ -146,6 +146,7 @@ angular
 
     var files_pre = [];
     var files_final=[];
+    
     $scope.interface = {};
     $scope.$on('$dropletReady', function whenDropletReady() {
       $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif']);
@@ -277,6 +278,8 @@ angular
                 transformRequest: angular.identity,
                 headers:{"Content-Type":undefined} 
             };
+
+            console.log(data);
 
             $http.post('/api/flat', data , option)
               .success(function(data){
