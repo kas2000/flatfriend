@@ -10,7 +10,7 @@ router.post('/', function(req, res, next){
     port: 25,
     auth:{
         user: 'kyzaibekk@gmail.com',
-        pass: 'Zhangir1224123123'
+        pass: 'Rakhimzhan1224123123'
     }
 	});
 

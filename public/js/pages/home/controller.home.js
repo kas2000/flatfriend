@@ -26,14 +26,23 @@ angular
         console.log('qwe');
         if(vm.email&&vm.email!=''&&vm.password&&vm.password!=''&&vm.password==vm.password_confirm&&vm.firstname&&vm.firstname!=''&&vm.lastname&&vm.lastname!=''&&vm.role){
           console.log('qwe');
-            Auth.signup({
+          var data = {
               email: vm.email,
               password: vm.password,
               firstname: vm.firstname,
               lastname: vm.lastname,
               role: vm.role,
               quick: true
-          });
+          }
+          $http.post('/api/signup', data)
+            .success(function(data){
+                Notification.info({message: 'Добро пожаловать, '+data.firstname, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
+                  $rootScope.currentUser = data;
+                  $state.go('appartments');
+                  console.log(data);
+            }).error(function(data){
+                 Notification.error({message: data.msg, title: 'FlatFriend', positionY: 'top', positionX: 'right'});
+            })
         }
                 
       }

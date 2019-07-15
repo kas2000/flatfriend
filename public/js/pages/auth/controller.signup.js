@@ -190,7 +190,6 @@ angular
                             data.append("gender", vm.gender);
                             data.append("role", vm.role);
                             data.append("quick", false);
-                            data.append("avatar", avatar_final.file);
                             const option = {
                                 transformRequest: angular.identity,
                                 headers:{"Content-Type":undefined} 

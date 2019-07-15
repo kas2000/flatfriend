@@ -113,6 +113,7 @@ router.post('/api/login', passport.authenticate('local'), function(req, res) {
 
 router.post('/api/signup', upload.single('avatar'), function(req, res, next){
     console.log(req.files);
+        if(req.body.role == 'student') {
            var user = new User({
              firstname: req.body.firstname,
              lastname: req.body.lastname,
@@ -141,6 +142,24 @@ router.post('/api/signup', upload.single('avatar'), function(req, res, next){
             })
         
         });
+      } else {
+        var user = new User({
+             firstname: req.body.firstname,
+             lastname: req.body.lastname,
+             email: req.body.email,
+             password: req.body.password,
+             day: req.body.day,
+             month: req.body.month,
+             year: req.body.year,
+             gender: req.body.gender,
+             role: req.body.role,
+           });  
+        user.save(function(err, user){
+             req.login(user, function(err) {
+                  return res.json(user);
+              });
+            })
+      }
 
 });
 
